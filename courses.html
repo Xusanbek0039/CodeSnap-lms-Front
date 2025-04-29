@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurslar - Ta'lim Platformasi</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/aside.css">
+    <style>
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .courses-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .search-filter-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 250px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .search-input {
+            background-color: #1f2937;
+            border-color: #374151;
+            color: #f9fafb;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+        }
+
+        .filter-dropdown {
+            padding: 10px 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .filter-dropdown {
+            background-color: #1f2937;
+            border-color: #374151;
+            color: #f9fafb;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        body.dark .course-card {
+            background: #1f2937;
+            border-color: #374151;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: #818cf8;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        body.dark .course-title {
+            color: #f9fafb;
+        }
+
+        .course-description {
+            font-size: 0.95rem;
+            color: #6b7280;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        body.dark .course-description {
+            color: #9ca3af;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        body.dark .course-meta {
+            border-color: #374151;
+        }
+
+        .course-price {
+            font-weight: 600;
+            color: #4f46e5;
+        }
+
+        body.dark .course-price {
+            color: #818cf8;
+        }
+
+        .course-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #fbbf24;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            gap: 10px;
+        }
+
+        .page-button {
+            padding: 8px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark .page-button {
+            background: #1f2937;
+            border-color: #374151;
+            color: #f9fafb;
+        }
+
+        .page-button:hover,
+        .page-button.active {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+        }
+
+        @media (max-width: 768px) {
+            .courses-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-filter-container {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- Sidebar Placeholder -->
+    <div id="sidebar-placeholder"></div>
+    
+    <!-- Main Content -->
+    <main id="mainContent">
+        <div class="courses-container">
+            <div class="courses-header">
+                <h1 class="dashboard-title">Kurslar</h1>
+                <div class="search-filter-container">
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Kurslarni qidirish...">
+                    </div>
+                    <select class="filter-dropdown">
+                        <option value="all">Barcha yo'nalishlar</option>
+                        <option value="programming">Dasturlash</option>
+                        <option value="design">Dizayn</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="business">Biznes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="courses-grid">
+                <!-- Course Cards -->
+                <div class="course-card">
+                    <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg" alt="Web Development" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Dasturlash</span>
+                        <h3 class="course-title">Frontend Development</h3>
+                        <p class="course-description">HTML, CSS va JavaScript asoslaridan professional darajagacha.</p>
+                        <div class="course-meta">
+                            <span class="course-price">1,200,000 so'm</span>
+                            <div class="course-rating">
+                                4.8 ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg" alt="UI/UX Design" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Dizayn</span>
+                        <h3 class="course-title">UI/UX Dizayn</h3>
+                        <p class="course-description">Zamonaviy interfeys dizayni va foydalanuvchi tajribasi.</p>
+                        <div class="course-meta">
+                            <span class="course-price">1,500,000 so'm</span>
+                            <div class="course-rating">
+                                4.9 ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://images.pexels.com/photos/935979/pexels-photo-935979.jpeg" alt="Digital Marketing" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Marketing</span>
+                        <h3 class="course-title">Raqamli Marketing</h3>
+                        <p class="course-description">Ijtimoiy tarmoqlar marketingi va SEO optimizatsiya.</p>
+                        <div class="course-meta">
+                            <span class="course-price">900,000 so'm</span>
+                            <div class="course-rating">
+                                4.7 ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://images.pexels.com/photos/2422294/pexels-photo-2422294.jpeg" alt="Python Programming" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Dasturlash</span>
+                        <h3 class="course-title">Python Dasturlash</h3>
+                        <p class="course-description">Python dasturlash tili va uning kutubxonalari.</p>
+                        <div class="course-meta">
+                            <span class="course-price">1,300,000 so'm</span>
+                            <div class="course-rating">
+                                4.8 ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg" alt="Mobile Development" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Dasturlash</span>
+                        <h3 class="course-title">Mobile Development</h3>
+                        <p class="course-description">iOS va Android uchun mobil ilovalar yaratish.</p>
+                        <div class="course-meta">
+                            <span class="course-price">1,400,000 so'm</span>
+                            <div class="course-rating">
+                                4.6 ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg" alt="Business Analytics" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Biznes</span>
+                        <h3 class="course-title">Biznes Tahlil</h3>
+                        <p class="course-description">Ma'lumotlar tahlili va biznes qarorlar qabul qilish.</p>
+                        <div class="course-meta">
+                            <span class="course-price">1,100,000 so'm</span>
+                            <div class="course-rating">
+                                4.7 ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-button">←</button>
+                <button class="page-button active">1</button>
+                <button class="page-button">2</button>
+                <button class="page-button">3</button>
+                <button class="page-button">→</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create sidebar structure
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch and load sidebar
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Activate courses tab
+                        const coursesNavBtn = document.querySelector('[data-page="courses"]');
+                        if (coursesNavBtn) {
+                            document.querySelectorAll('.nav-btn').forEach(btn => {
+                                btn.classList.remove('active');
+                            });
+                            coursesNavBtn.classList.add('active');
+                        }
+                        
+                        // Initialize aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                });
+
+            // Add search functionality
+            const searchInput = document.querySelector('.search-input');
+            const filterDropdown = document.querySelector('.filter-dropdown');
+            const courseCards = document.querySelectorAll('.course-card');
+
+            if (searchInput) {
+                searchInput.addEventListener('input', filterCourses);
+            }
+
+            if (filterDropdown) {
+                filterDropdown.addEventListener('change', filterCourses);
+            }
+
+            function filterCourses() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const selectedCategory = filterDropdown.value;
+
+                courseCards.forEach(card => {
+                    const title = card.querySelector('.course-title').textContent.toLowerCase();
+                    const category = card.querySelector('.course-category').textContent.toLowerCase();
+                    const matchesSearch = title.includes(searchTerm);
+                    const matchesCategory = selectedCategory === 'all' || category.includes(selectedCategory.toLowerCase());
+
+                    card.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+                });
+            }
+
+            // Add pagination functionality
+            const pageButtons = document.querySelectorAll('.page-button');
+            pageButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    pageButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    // Here you would typically load new course data
+                });
+            });
+        });
+    </script>
+</body>
+</html>

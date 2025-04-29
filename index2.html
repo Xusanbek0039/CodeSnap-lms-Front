@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Sidebar Navigation - Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/aside.css">
+    <style>
+        /* Additional styles for index2 (dashboard) */
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        body.dark .dashboard-header {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dashboard-title {
+            margin: 0;
+        }
+        
+        .date-display {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark .stat-card {
+            background: #1f2937;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-title {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0;
+            color: #4f46e5;
+        }
+        
+        body.dark .stat-value {
+            color: #818cf8;
+        }
+        
+        .activity-section {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        body.dark .activity-section {
+            background: #1f2937;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .activity-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .activity-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        body.dark .activity-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4f46e5;
+        }
+        
+        body.dark .activity-icon {
+            background: #374151;
+            color: #818cf8;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-title {
+            margin: 0 0 5px 0;
+            font-size: 0.95rem;
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- The sidebar component will be loaded here via JS -->
+    <div id="sidebar-placeholder"></div>
+    
+    <!-- Main Content Area - Dashboard -->
+    <main id="mainContent">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Statistik ma'lumotlar</h1>
+                <div class="date-display" id="currentDate">Monday, 1 January 2025</div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-title">Faol o'quvchilar</div>
+                    <p class="stat-value">1,286</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-title">O'qituvchilar</div>
+                    <p class="stat-value">48</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-title">Kurslar</div>
+                    <p class="stat-value">56</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-title">Bugungi kirishlar</div>
+                    <p class="stat-value">329</p>
+                </div>
+            </div>
+            
+            <div class="activity-section">
+                <div class="activity-header">
+                    <h2>So'nggi faollik</h2>
+                </div>
+                
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4 class="activity-title">Yangi o'quvchi ro'yxatdan o'tdi</h4>
+                            <div class="activity-time">30 daqiqa oldin</div>
+                        </div>
+                    </li>
+                    
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4 class="activity-title">Yangi kurs qo'shildi: "Frontend asoslari"</h4>
+                            <div class="activity-time">2 soat oldin</div>
+                        </div>
+                    </li>
+                    
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4 class="activity-title">Alisher Nabiev profilini yangiladi</h4>
+                            <div class="activity-time">5 soat oldin</div>
+                        </div>
+                    </li>
+                    
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <h4 class="activity-title">Platformada texnik xizmat o'tkazildi</h4>
+                            <div class="activity-time">1 kun oldin</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/aside.js"></script>
+    <script>
+        // Load the sidebar component (same as index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create sidebar structure in index2 page
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Activate the statistics tab for this page
+                        const statNavBtn = document.querySelector('[data-page="statistics"]');
+                        if (statNavBtn) {
+                            document.querySelectorAll('.nav-btn').forEach(btn => {
+                                btn.classList.remove('active');
+                            });
+                            statNavBtn.classList.add('active');
+                        }
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+                    // Fallback - basic sidebar structure (similar to index.html)
+                    const asideContainer = document.createElement('div');
+                    asideContainer.className = 'aside-container';
+                    asideContainer.innerHTML = `
+                        <aside class="sidebar">
+                            <button id="closeBtn" class="close-btn" aria-label="Close menu">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                            <div class="profile-section">
+                                <div class="profile-avatar">
+                                    <img src="https://i.pravatar.cc/150?img=12" alt="User Avatar">
+                                </div>
+                                <div class="profile-info">
+                                    <h3 class="profile-name">Anvar Karimov</h3>
+                                    <p class="profile-activity">Oxirgi faollik: 2 kun oldin</p>
+                                </div>
+                            </div>
+                            <!-- Basic navigation -->
+                            <nav class="nav-section">
+                                <h4 class="section-title">Navigatsiya</h4>
+                                <ul class="nav-list">
+                                    <li>
+                                        <button class="nav-btn" data-page="home">Bosh sahifa</button>
+                                    </li>
+                                    <li>
+                                        <button class="nav-btn active" data-page="statistics">Statistika</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </aside>
+                    `;
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+            
+            // Set current date
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('uz-UZ', options);
+        });
+    </script>
+</body>
+</html>
