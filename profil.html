@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foydalanuvchi Profili</title>
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="css/aside.css">
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+  <div class="konteyner">
+    <header class="sarlavha">
+      <h1 class="asosiy-sarlavha">Profil Ma'lumotlari</h1>
+    </header>
+
+    <main class="asosiy">
+      <div class="profil-panel">
+        <div class="profil-rasm-qism">
+          <div class="profil-rasm-konteyner">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foydalanuvchi rasmi" class="profil-rasm">
+          </div>
+          <a href="profil_edit.html" class="taxrirlash-tugma">
+            Taxrirlash
+          </a>
+        </div>
+
+        <div class="malumot-qism">
+          <div class="malumot-blok">
+            <h3 class="blok-sarlavha">Shaxsiy Ma'lumotlar</h3>
+            
+            <div class="malumot-qator">
+              <span class="malumot-yorliq">Ism Familiya:</span>
+              <span class="malumot-matn">Alisher Rashidov</span>
+            </div>
+
+            <div class="malumot-qator">
+              <span class="malumot-yorliq">Tug'ilgan Sana:</span>
+              <span class="malumot-matn">1995-yil 15-mart</span>
+            </div>
+
+            <div class="malumot-qator">
+              <span class="malumot-yorliq">Jinsi:</span>
+              <span class="malumot-matn">Erkak</span>
+            </div>
+          </div>
+
+          <div class="malumot-blok">
+            <h3 class="blok-sarlavha">Aloqa Ma'lumotlari</h3>
+            
+            <div class="malumot-qator">
+              <span class="malumot-yorliq">Telefon:</span>
+              <span class="malumot-matn">+998 90 123 45 67</span>
+            </div>
+
+            <div class="malumot-qator">
+              <span class="malumot-yorliq">Email:</span>
+              <span class="malumot-matn">alisher.rashidov@example.com</span>
+            </div>
+
+            <div class="malumot-qator">
+              <span class="malumot-yorliq">Manzil:</span>
+              <span class="malumot-matn">Toshkent sh., Chilonzor tumani, 19-mavze</span>
+            </div>
+          </div>
+
+          <div class="malumot-blok">
+            <h3 class="blok-sarlavha">Ta'lim Ma'lumotlari</h3>
+            
+            <div class="malumot-qator">
+              <span class="malumot-yorliq">O'qish Joyi:</span>
+              <span class="malumot-matn">Toshkent Axborot Texnologiyalari Universiteti</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="js/aside.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+
+          const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+          
+          // Create menu button
+          const menuBtn = document.createElement('button');
+          menuBtn.id = 'menuBtn';
+          menuBtn.className = 'menu-btn';
+          menuBtn.setAttribute('aria-label', 'Menu');
+          menuBtn.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" x2="20" y1="12" y2="12"></line>
+                  <line x1="4" x2="20" y1="6" y2="6"></line>
+                  <line x1="4" x2="20" y1="18" y2="18"></line>
+              </svg>
+          `;
+          
+          // Create overlay
+          const overlay = document.createElement('div');
+          overlay.className = 'sidebar-overlay';
+          
+          // Append to placeholder
+          sidebarPlaceholder.appendChild(menuBtn);
+          sidebarPlaceholder.appendChild(overlay);
+          
+          // Fetch sidebar content (in a real app)
+          // For this demo, we'll load it from aside.html
+          fetch('aside.html')
+              .then(response => response.text())
+              .then(html => {
+                  const parser = new DOMParser();
+                  const doc = parser.parseFromString(html, 'text/html');
+                  const asideContainer = doc.querySelector('.aside-container');
+                  
+                  if (asideContainer) {
+                      sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                      
+                      // Re-initialize the aside system
+                      initApp();
+                  }
+              })
+              .catch(err => {
+                  console.error('Error loading sidebar:', err);
+                  
+
+                  
+                  sidebarPlaceholder.appendChild(asideContainer);
+                  
+                  // Initialize with basic functions
+                  menuBtn.addEventListener('click', function() {
+                      document.body.classList.toggle('sidebar-open');
+                  });
+                  
+                  document.querySelector('#closeBtn').addEventListener('click', function() {
+                      document.body.classList.remove('sidebar-open');
+                  });
+              });
+      });
+  </script>
+</body>
+</html>

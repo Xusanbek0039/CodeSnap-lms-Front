@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profilni Taxrirlash</title>
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="css/aside.css">
+</head>
+<body>     <div id="sidebar-placeholder"></div>
+
+  <div class="konteyner">
+    <header class="sarlavha">
+      <div class="yuqori-panel">
+        <h1 class="asosiy-sarlavha">Profilni Taxrirlash</h1>
+        <a href="parol_tiklash.html" class="orqaga-tugma" style="background-color: blue;">Parolni o'zgartirish</a>
+        <a href="profil.html" class="orqaga-tugma">Profilga qaytish</a>
+        
+      </div>
+    </header>
+
+    <main class="asosiy">
+      <div class="taxrirlash-panel">
+        <div class="profil-rasm-qism">
+          <div class="profil-rasm-konteyner">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foydalanuvchi rasmi" class="profil-rasm">
+          </div>
+          <label class="rasm-yuklash-tugma">
+            Rasm yuklash
+            <input type="file" accept="image/*" class="yashirin-input">
+          </label>
+        </div>
+
+        <form class="taxrirlash-forma">
+          <div class="forma-blok">
+            <h3 class="blok-sarlavha">Shaxsiy Ma'lumotlar</h3>
+            
+            <div class="kiritish-qator">
+              <label class="kiritish-yorliq">Ism Familiya</label>
+              <input type="text" class="kiritish-maydon" value="Alisher Rashidov">
+            </div>
+
+            <div class="kiritish-qator">
+              <label class="kiritish-yorliq">Tug'ilgan Sana</label>
+              <input type="date" class="kiritish-maydon" value="1995-03-15">
+            </div>
+
+            <div class="kiritish-qator">
+              <label class="kiritish-yorliq">Jinsi</label>
+              <select class="kiritish-maydon">
+                <option value="erkak">Erkak</option>
+                <option value="ayol">Ayol</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="forma-blok">
+            <h3 class="blok-sarlavha">Aloqa Ma'lumotlari</h3>
+            
+            <div class="kiritish-qator">
+              <label class="kiritish-yorliq">Telefon</label>
+              <input type="tel" class="kiritish-maydon" value="+998 90 123 45 67">
+            </div>
+
+            <div class="kiritish-qator">
+              <label class="kiritish-yorliq">Email</label>
+              <input type="email" class="kiritish-maydon" value="alisher.rashidov@example.com">
+            </div>
+
+            <div class="kiritish-qator">
+              <label class="kiritish-yorliq">Manzil</label>
+              <input type="text" class="kiritish-maydon" value="Toshkent sh., Chilonzor tumani, 19-mavze">
+            </div>
+          </div>
+
+          <div class="forma-blok">
+            <h3 class="blok-sarlavha">Ta'lim Ma'lumotlari</h3>
+            
+            <div class="kiritish-qator">
+              <label class="kiritish-yorliq">O'qish Joyi</label>
+              <input type="text" class="kiritish-maydon" value="Toshkent Axborot Texnologiyalari Universiteti">
+            </div>
+          </div>
+
+          
+
+          <div class="tugmalar-qator">
+            <button type="submit" class="saqlash-tugma">Saqlash</button>
+            <a href="profil.html" class="bekor-tugma">Bekor qilish</a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+  
+  <script src="js/aside.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+
+          const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+          
+          // Create menu button
+          const menuBtn = document.createElement('button');
+          menuBtn.id = 'menuBtn';
+          menuBtn.className = 'menu-btn';
+          menuBtn.setAttribute('aria-label', 'Menu');
+          menuBtn.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="4" x2="20" y1="12" y2="12"></line>
+                  <line x1="4" x2="20" y1="6" y2="6"></line>
+                  <line x1="4" x2="20" y1="18" y2="18"></line>
+              </svg>
+          `;
+          
+          // Create overlay
+          const overlay = document.createElement('div');
+          overlay.className = 'sidebar-overlay';
+          
+          // Append to placeholder
+          sidebarPlaceholder.appendChild(menuBtn);
+          sidebarPlaceholder.appendChild(overlay);
+          
+          // Fetch sidebar content (in a real app)
+          // For this demo, we'll load it from aside.html
+          fetch('aside.html')
+              .then(response => response.text())
+              .then(html => {
+                  const parser = new DOMParser();
+                  const doc = parser.parseFromString(html, 'text/html');
+                  const asideContainer = doc.querySelector('.aside-container');
+                  
+                  if (asideContainer) {
+                      sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                      
+                      // Re-initialize the aside system
+                      initApp();
+                  }
+              })
+              .catch(err => {
+                  console.error('Error loading sidebar:', err);
+                  
+
+                  
+                  sidebarPlaceholder.appendChild(asideContainer);
+                  
+                  // Initialize with basic functions
+                  menuBtn.addEventListener('click', function() {
+                      document.body.classList.toggle('sidebar-open');
+                  });
+                  
+                  document.querySelector('#closeBtn').addEventListener('click', function() {
+                      document.body.classList.remove('sidebar-open');
+                  });
+              });
+      });
+  </script>
+</body>
+</html>
