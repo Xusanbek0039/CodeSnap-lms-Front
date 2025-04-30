@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topshiriq Yuklash</title>
+  <link rel="stylesheet" href="css/topshiriq_upload.css">
+  <link rel="stylesheet" href="css/aside.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    label{
+        color: #ffffff;
+    }
+  </style>
+</head>
+<body class="tana"><div id="sidebar-placeholder"></div>
+
+  <div class="konteyner">
+    <div class="sarlavha">
+    </div>
+    
+    <div class="forma-konteyner">
+      <form id="topshiriqForma">
+        <div class="forma-guruh">
+          <label for="topshiriqNomi">Topshiriq nomi</label>
+          <input type="text" id="topshiriqNomi" class="kiritish-maydoni" required>
+        </div>
+
+        <div class="forma-guruh">
+          <label for="topshiriqTavsifi">Topshiriq tavsifi</label>
+          <textarea id="topshiriqTavsifi" class="kiritish-maydoni tavsif" required></textarea>
+        </div>
+
+        <div class="yuklash-qismi">
+          <div class="fayl-yuklash">
+            <label for="fayl" class="fayl-tugma">
+              <span class="fayl-icon">📎</span>
+              Faylni tanlang
+            </label>
+            <input type="file" id="fayl" class="yashirin">
+            <div id="faylNomi" class="fayl-nomi"></div>
+          </div>
+
+          <div class="yoki">
+            <span>yoki</span>
+          </div>
+
+          <div class="forma-guruh">
+            <label for="kodMatni">Kodni kiriting</label>
+            <div class="kod-editor">
+              <div class="kod-asboblar">
+                <select id="kodTili" class="kod-tili">
+                  <option value="text">Oddiy matn</option>
+                  <option value="javascript">JavaScript</option>
+                  <option value="python">Python</option>
+                  <option value="html">HTML</option>
+                  <option value="css">CSS</option>
+                </select>
+                <button type="button" id="formatTugma" class="format-tugma">Formatlashtirish</button>
+              </div>
+              <textarea id="kodMatni" class="kod-maydon" spellcheck="false"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="forma-tugmalari">
+          <button type="button" class="bekor-tugma">Orqaga</button>
+          <button type="submit" class="yuborish-tugma">Yuborish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Fayl tanlash
+    document.getElementById('fayl').addEventListener('change', function(e) {
+      const faylNomi = document.getElementById('faylNomi');
+      if (this.files.length > 0) {
+        faylNomi.textContent = this.files[0].name;
+      } else {
+        faylNomi.textContent = '';
+      }
+    });
+
+    // Kod formatlash
+    document.getElementById('formatTugma').addEventListener('click', function() {
+      const kodMatni = document.getElementById('kodMatni');
+      const tili = document.getElementById('kodTili').value;
+      
+      try {
+        let formatlangan;
+        if (tili === 'javascript') {
+          formatlangan = JSON.stringify(JSON.parse(kodMatni.value), null, 2);
+        } else {
+          formatlangan = kodMatni.value;
+        }
+        kodMatni.value = formatlangan;
+      } catch (error) {
+        console.error('Formatlashda xatolik:', error);
+      }
+    });
+
+    // Rejim o'zgartirish
+    document.getElementById('rejimTugmasi').addEventListener('click', function() {
+      document.body.classList.toggle('yorug-rejim');
+      const quyosh = document.querySelector('.quyosh');
+      const oy = document.querySelector('.oy');
+      
+      if (document.body.classList.contains('yorug-rejim')) {
+        quyosh.style.display = 'none';
+        oy.style.display = 'block';
+      } else {
+        quyosh.style.display = 'block';
+        oy.style.display = 'none';
+      }
+    });
+  </script>
+      <script src="js/aside.js"></script>
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+  
+              const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+              
+              // Create menu button
+              const menuBtn = document.createElement('button');
+              menuBtn.id = 'menuBtn';
+              menuBtn.className = 'menu-btn';
+              menuBtn.setAttribute('aria-label', 'Menu');
+              menuBtn.innerHTML = `
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" x2="20" y1="12" y2="12"></line>
+                      <line x1="4" x2="20" y1="6" y2="6"></line>
+                      <line x1="4" x2="20" y1="18" y2="18"></line>
+                  </svg>
+              `;
+              
+              // Create overlay
+              const overlay = document.createElement('div');
+              overlay.className = 'sidebar-overlay';
+              
+              // Append to placeholder
+              sidebarPlaceholder.appendChild(menuBtn);
+              sidebarPlaceholder.appendChild(overlay);
+              
+              // Fetch sidebar content (in a real app)
+              // For this demo, we'll load it from aside.html
+              fetch('aside.html')
+                  .then(response => response.text())
+                  .then(html => {
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(html, 'text/html');
+                      const asideContainer = doc.querySelector('.aside-container');
+                      
+                      if (asideContainer) {
+                          sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                          
+                          // Re-initialize the aside system
+                          initApp();
+                      }
+                  })
+                  .catch(err => {
+                      console.error('Error loading sidebar:', err);
+                      
+  
+                      
+                      sidebarPlaceholder.appendChild(asideContainer);
+                      
+                      // Initialize with basic functions
+                      menuBtn.addEventListener('click', function() {
+                          document.body.classList.toggle('sidebar-open');
+                      });
+                      
+                      document.querySelector('#closeBtn').addEventListener('click', function() {
+                          document.body.classList.remove('sidebar-open');
+                      });
+                  });
+          });
+      </script>
+</body>
+</html>

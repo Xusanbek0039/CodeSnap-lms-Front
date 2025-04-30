@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topshiriq Ko'rish</title>
+  <link rel="stylesheet" href="css/aside.css">
+  <style>
+    .code-container {
+      position: relative;
+      padding: 1rem;
+      background: #1e1e1e;
+      color: #f8f8f2;
+      border-radius: 8px;
+      font-family: monospace;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #444;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: #666;
+    }
+    .xulosa-qatori {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.yorliq {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.kirish-maydoni {
+  padding: 10px 12px;
+  background-color:hsla(192, 98.80%, 31.80%, 0.00); 
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  color: white;
+  transition: border-color 0.3s ease;
+}
+
+.kirish-maydoni:focus {
+  border-color:rgb(16, 31, 97);
+  outline: none;
+}
+
+  </style>
+  <link rel="stylesheet" href="css/topshiriq_javobi.css">
+</head>
+<body>     <div id="sidebar-placeholder"></div>
+
+  <div class="konteyner">
+    <header class="sarlavha">
+      <div class="yuqori-panel">
+        <h1 class="asosiy-sarlavha">Topshiriq Tafsilotlari</h1>
+        <a href="topshiriq_javobi.html" class="orqaga-tugma">
+          Ro'yxatga qaytish
+        </a>
+      </div>
+    </header>
+
+    <main class="asosiy">
+      <div class="tafsilot-panel">
+        <div class="tafsilot-qator">
+          <!-- Talaba ma'lumotlari qismi -->
+          <div class="talaba-qism">
+            <div class="talaba-profil">
+              <div class="profil-rasm-konteyner">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Talaba profili" class="profil-rasm">
+              </div>
+              <div class="talaba-malumot">
+                <h2 class="talaba-ism">Alisher Rashidov</h2>
+                <p class="yuklangan-vaqt">15 Nov, 2023, 14:30</p>
+              </div>
+            </div>
+
+            <div class="malumot-blok">
+              <h3 class="blok-sarlavha">Topshiriq nomi</h3>
+              <p class="blok-matn">JavaScript asoslari</p>
+            </div>
+
+            <div class="malumot-blok">
+              <h3 class="blok-sarlavha">Topshiriq tavsifi</h3>
+              <p class="blok-matn">Oddiy calculator yaratish JavaScript yordamida, asosiy arifmetik amallarni bajarish imkoniyati bilan.</p>
+            </div>
+
+            <div class="malumot-blok">
+              <h3 class="blok-sarlavha">Biriktirilgan fayl</h3>
+              <a href="#" class="yuklash-tugma animatsiya-tugma">
+                Yuklab olish
+              </a>
+            </div>
+            <div class="xulosa-qatori">
+                <label for="xulosa" class="yorliq">Xulosa</label>
+                <input type="text" id="xulosa" class="kirish-maydoni">
+              </div>
+          </div>
+
+          
+
+          <!-- Kod va baholash qismi -->
+          <div class="kod-qism code-container">
+            <div class="malumot-blok">
+              <h3 class="blok-sarlavha">Kiritilgan kod</h3>
+              <div class="kod-panel">
+                <button class="copy-btn" onclick="copyCode()">Copy</button>
+
+                <pre><code id="code-block">function calculator(a, b, operation) {
+  switch(operation) {
+    case 'add':
+      return a + b;
+    case 'subtract':
+      return a - b;
+    case 'multiply':
+      return a * b;
+    case 'divide':
+      if (b === 0) {
+        throw new Error('Division by zero');
+      }
+      return a / b;
+    default:
+      throw new Error('Invalid operation');
+  }
+}
+
+// Test cases
+console.log(calculator(5, 3, 'add')); // 8
+console.log(calculator(5, 3, 'subtract')); // 2
+console.log(calculator(5, 3, 'multiply')); // 15
+console.log(calculator(6, 3, 'divide')); // 2</code></pre>
+              </div>
+            </div>
+
+            <div class="baholash-panel">
+              <h3 class="blok-sarlavha">Baholash</h3>
+              
+              <div class="baholash-qator">
+                <label for="ball" class="yorliq">Ball (0-100)</label>
+                <input type="number" id="ball" min="0" max="100" class="kiritish-maydon">
+              </div>
+              
+              <div class="tugmalar-qator">
+                <button class="baholash-tugma animatsiya-tugma">
+                  Baholash
+                </button>
+                <button class="bekor-tugma animatsiya-tugma">
+                  Bekor qilish
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="js/aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            // For this demo, we'll load it from aside.html
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+        });
+    </script>
+    <script>
+        function copyCode() {
+          const code = document.getElementById("code-block").innerText;
+          navigator.clipboard.writeText(code).then(() => {
+            alert("Kod nusxalandi!");
+          }).catch(err => {
+            alert("Nusxalab bo'lmadi: " + err);
+          });
+        }
+      </script>
+</body>
+</html>
+
+

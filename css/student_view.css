@@ -1,0 +1,226 @@
+:root {
+    --rang-asosiy: #3B82F6;
+    --rang-ikkilamchi: #2563EB;
+    --rang-muvaffaqiyat: #4ADE80;
+    --rang-xato: #F87171;
+    --rang-ogohlantirish: #FACC15;
+    --rang-matn-qora: #111827;
+    --rang-matn-kulrang: #6B7280;
+    --rang-fon-qora: #111827;
+    --rang-fon-toq: #1F2937;
+    --rang-fon-och: #F9FAFB;
+    --rang-fon-oq: #FFFFFF;
+    --rang-chegara: #E5E7EB;
+    --soya-kichik: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --soya-orta: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --soya-katta: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --radius-kichik: 4px;
+    --radius-orta: 8px;
+    --radius-katta: 12px;
+    --radius-yumaloq: 50%;
+    --otish-tezlik: 0.3s;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .tana {
+    background-color: var(--rang-fon-qora);
+    color: var(--rang-fon-och);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    transition: background-color var(--otish-tezlik), color var(--otish-tezlik);
+  }
+  
+  .tana.yorug-rejim {
+    background-color: var(--rang-fon-och);
+    color: var(--rang-matn-qora);
+  }
+  
+  .konteyner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .sarlavha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .sarlavha h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .amallar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .taxrirlash-tugma, .ochirish-tugma {
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-kichik);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--otish-tezlik);
+  }
+  
+  .taxrirlash-tugma {
+    background-color: var(--rang-asosiy);
+    color: var(--rang-fon-oq);
+    border: none;
+  }
+  
+  .taxrirlash-tugma:hover {
+    background-color: var(--rang-ikkilamchi);
+  }
+  
+  .ochirish-tugma {
+    background-color: transparent;
+    border: 1px solid var(--rang-xato);
+    color: var(--rang-xato);
+  }
+  
+  .ochirish-tugma:hover {
+    background-color: var(--rang-xato);
+    color: var(--rang-fon-oq);
+  }
+  
+  .rejim-tugmasi {
+    background-color: var(--rang-fon-toq);
+    border-radius: var(--radius-yumaloq);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--rang-fon-och);
+    transition: background-color var(--otish-tezlik);
+  }
+  
+  .yorug-rejim .rejim-tugmasi {
+    background-color: var(--rang-asosiy);
+    color: var(--rang-fon-oq);
+  }
+  
+  .malumot-konteyner {
+    background-color: var(--rang-fon-toq);
+    border-radius: var(--radius-katta);
+    padding: 2rem;
+    box-shadow: var(--soya-katta);
+    transition: background-color var(--otish-tezlik);
+  }
+  
+  .yorug-rejim .malumot-konteyner {
+    background-color: var(--rang-fon-oq);
+    box-shadow: var(--soya-orta);
+  }
+  
+  .profil-qismi {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rang-chegara);
+  }
+  
+  .profil-rasm {
+    width: 150px;
+    height: 150px;
+    border-radius: var(--radius-orta);
+    overflow: hidden;
+  }
+  
+  .profil-rasm img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .asosiy-malumot {
+    flex: 1;
+  }
+  
+  .ism {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .yonalish {
+    color: var(--rang-matn-kulrang);
+    font-size: 1.125rem;
+  }
+  
+  .malumotlar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .malumot-guruh {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .malumot-element {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .label {
+    color: var(--rang-matn-kulrang);
+    font-size: 0.875rem;
+  }
+  
+  .qiymat {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  @media (max-width: 768px) {
+    .sarlavha {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+    
+    .profil-qismi {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .malumotlar {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .tana {
+      padding: 1rem;
+    }
+    
+    .amallar {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .taxrirlash-tugma, .ochirish-tugma {
+      width: 100%;
+    }
+  }

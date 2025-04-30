@@ -472,7 +472,9 @@ textarea {
     .btn {
         width: 100%;
     }
-}:root {
+}
+
+:root {
     --primary-color: #4f46e5;
     --primary-hover: #4338ca;
     --text-light: #f9fafb;

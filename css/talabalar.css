@@ -1,159 +1,193 @@
-/* Asosiy uslublar va qayta o'rnatish */
+/* ===== ASOSIY STILLARI ===== */
+:root {
+    /* Asosiy ranglar - indigo/ko'k siyohrang asosida */
+    --asosiy-rang: #312e81;
+    --asosiy-rang-och: #4338ca;
+    --asosiy-rang-yanada-och: #6366f1;
+    
+    /* Matn ranglari */
+    --matn-rang-asosiy: #f8fafc;
+    --matn-rang-ikkilamchi: #cbd5e1;
+    
+    /* Orqa fon ranglari */
+    --orqa-fon-asosiy: #1e1b4b;
+    --orqa-fon-ikkilamchi: #312e81;
+    --orqa-fon-panel: #4338ca;
+    
+    /* Jadval ranglari */
+    --jadval-sarlavha-fon: #4338ca;
+    --jadval-juft-qator: rgba(99, 102, 241, 0.1);
+    --jadval-chegara: #4338ca;
+    
+    /* Amal tugmalari */
+    --tahrirlash-rang: #3b82f6;
+    --ochirish-rang: #ef4444;
+    
+    /* O'lchamlar va oraliqlar */
+    --asosiy-yumaloq: 8px;
+    --katta-yumaloq: 12px;
+    --asosiy-soya: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    --katta-soya: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Animatsiya */
+    --animatsiya-vaqti: 0.3s;
+}
+
+/* Yorug' tema o'zgaruvchilari */
+.yorug-tema {
+    --asosiy-rang: #4338ca;
+    --asosiy-rang-och: #6366f1;
+    --asosiy-rang-yanada-och: #818cf8;
+    
+    /* Matn ranglari */
+    --matn-rang-asosiy: #1e293b;
+    --matn-rang-ikkilamchi: #475569;
+    
+    /* Orqa fon ranglari */
+    --orqa-fon-asosiy: #f8fafc;
+    --orqa-fon-ikkilamchi: #f1f5f9;
+    --orqa-fon-panel: #ffffff;
+    
+    /* Jadval ranglari */
+    --jadval-sarlavha-fon: #4338ca;
+    --jadval-juft-qator: rgba(99, 102, 241, 0.1);
+    --jadval-chegara: #e2e8f0;
+}
+
+/* Asosiy stil */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #f8fafc;
-}
-
-:root {
-    --asosiy-rang: #312e81;
-    --asosiy-och: #4338ca;
-    --asosiy-qorongi: #1e1b4b;
-    --matn-och: #f8fafc;
-    --matn-qorongi: #1e293b;
-    --matn-kulrang: #64748b;
-    --fon-och: #f8fafc;
-    --chegara-rang: #e2e8f0;
-    --muvaffaqiyat-rang: #10b981;
-    --xavf-rang: #ef4444;
-    --soya-kichik: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --soya-orta: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --otish: all 0.3s ease;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: var(--fon-och);
-    color: var(--matn-qorongi);
-    line-height: 1.5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--orqa-fon-asosiy);
+    color: var(--matn-rang-asosiy);
+    min-height: 100vh;
+    transition: background-color var(--animatsiya-vaqti), color var(--animatsiya-vaqti);
 }
 
 .konteyner {
-    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 24px 16px;
 }
 
-/* Sarlavha uslublari */
+/* ===== SARLAVHA QISMI ===== */
 .sarlavha {
-    background-color: var(--asosiy-rang);
-    color: var(--matn-och);
-    padding: 2rem 0;
-    box-shadow: var(--soya-orta);
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.sarlavha-nomi {
-    text-align: center;
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-}
-
-.qidirish-blok {
-    max-width: 480px;
+.qidiruv-konteyner {
+    width: 100%;
+    max-width: 600px;
     margin: 0 auto;
-    position: relative;
 }
 
-.qidirish-maydon {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    padding-right: 3rem;
+.qidiruv-panel {
+    display: flex;
+    background-color: var(--orqa-fon-panel);
+    border-radius: var(--katta-yumaloq);
+    overflow: hidden;
+    box-shadow: var(--asosiy-soya);
+    transition: box-shadow 0.3s ease;
+}
+
+.qidiruv-panel:hover,
+.qidiruv-panel:focus-within {
+    box-shadow: var(--katta-soya);
+}
+
+.qidiruv-maydon {
+    flex: 1;
+    padding: 16px 24px;
     border: none;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    color: var(--matn-qorongi);
-    box-shadow: var(--soya-kichik);
-    transition: var(--otish);
-}
-
-.qidirish-maydon:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+    background-color: transparent;
+    color: var(--matn-rang-asosiy);
+    font-size: 16px;
 }
 
-.qidirish-tugma {
-    position: absolute;
-    right: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
+.qidiruv-maydon::placeholder {
+    color: var(--matn-rang-ikkilamchi);
+}
+
+.qidiruv-tugma {
+    background-color: var(--asosiy-rang);
+    color: white;
     border: none;
-    color: var(--matn-kulrang);
+    padding: 16px 24px;
     cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    transition: var(--otish);
+    transition: background-color var(--animatsiya-vaqti);
 }
 
-.qidirish-tugma:hover {
-    color: var(--asosiy-rang);
+.qidiruv-tugma:hover {
+    background-color: var(--asosiy-rang-och);
 }
 
-/* Asosiy kontent uslublari */
-.asosiy {
-    padding: 2rem 0;
+/* ===== ASOSIY MAZMUN ===== */
+.asosiy-mazmun {
+    background-color: var(--orqa-fon-ikkilamchi);
+    border-radius: var(--katta-yumaloq);
+    padding: 32px;
+    box-shadow: var(--asosiy-soya);
 }
 
-.bolim-sarlavha {
-    font-size: 1.5rem;
+.royhati-sarlavha {
+    font-size: 28px;
     font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: var(--asosiy-rang);
+    margin-bottom: 24px;
     text-align: center;
+    color: var(--matn-rang-asosiy);
 }
 
+/* ===== JADVAL STILLARI ===== */
 .jadval-konteyner {
-    width: 100%;
     overflow-x: auto;
-    box-shadow: var(--soya-orta);
-    border-radius: 0.5rem;
-    background-color: rgb(3, 17, 95);
+    border-radius: var(--asosiy-yumaloq);
+    box-shadow: var(--asosiy-soya);
 }
 
 .talabalar-jadval {
     width: 100%;
     border-collapse: collapse;
-    min-width: 800px;
+    border-radius: var(--asosiy-yumaloq);
+    overflow: hidden;
 }
 
 .talabalar-jadval th,
 .talabalar-jadval td {
-    padding: 1rem;
-    color: #f8fafc;
-    
+    padding: 16px;
     text-align: left;
-    border-bottom: 1px solid var(--chegara-rang);
+    border-bottom: 1px solid var(--jadval-chegara);
 }
 
 .talabalar-jadval th {
-    background-color: #01035e;
+    background-color: var(--jadval-sarlavha-fon);
+    color: white;
     font-weight: 600;
-    color: var(--matn-qorongi);
-    position: sticky;
-    top: 0;
+    white-space: nowrap;
 }
 
-.talabalar-jadval tbody tr {
-    transition: var(--otish);
+.talabalar-jadval tr:nth-child(even) {
+    background-color: var(--jadval-juft-qator);
 }
 
-.talabalar-jadval tbody tr:hover {
-    background-color: #f8fafc;
+.talabalar-jadval tr:hover {
+    background-color: rgba(99, 102, 241, 0.2);
 }
 
-.talabalar-jadval tbody tr:last-child td {
-    border-bottom: none;
-}
-
-/* Almashtirgich uslublari */
+/* ===== TUGMA ALMASHTIRGICH STILLARI ===== */
 .almashtirgich {
     position: relative;
     display: inline-block;
-    width: 48px;
-    height: 24px;
+    width: 54px;
+    height: 28px;
 }
 
 .almashtirgich input {
@@ -170,90 +204,155 @@ body {
     right: 0;
     bottom: 0;
     background-color: #cbd5e1;
-    transition: var(--otish);
-    border-radius: 34px;
+    transition: .4s;
+    border-radius: 28px;
 }
 
 .slayder:before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
-    left: 3px;
-    bottom: 3px;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
     background-color: white;
-    transition: var(--otish);
+    transition: .4s;
     border-radius: 50%;
 }
 
-.almashtirgich input:checked + .slayder {
-    background-color: var(--muvaffaqiyat-rang);
+input:checked + .slayder {
+    background-color: var(--asosiy-rang);
 }
 
-.almashtirgich input:checked + .slayder:before {
-    transform: translateX(24px);
+input:focus + .slayder {
+    box-shadow: 0 0 1px var(--asosiy-rang);
 }
 
-.almashtirgich input:focus + .slayder {
-    box-shadow: 0 0 1px var(--muvaffaqiyat-rang);
+input:checked + .slayder:before {
+    transform: translateX(26px);
 }
 
-/* Amal tugmalari uslublari */
+/* ===== AMAL TUGMALARI ===== */
 .amallar {
     display: flex;
-    gap: 0.5rem;
-    justify-content: center;
+    gap: 8px;
 }
 
 .amal-tugma {
-    background: transparent;
+    background: none;
     border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 0.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: var(--otish);
+    transition: background-color var(--animatsiya-vaqti), transform 0.2s;
 }
 
-.tahrirlash-tugma {
-    color: var(--asosiy-rang);
+.amal-tugma:hover {
+    transform: translateY(-2px);
 }
 
-.tahrirlash-tugma:hover {
-    background-color: rgba(79, 70, 229, 0.1);
+.tahrirlash {
+    color: var(--tahrirlash-rang);
 }
 
-.ochirish-tugma {
-    color: var(--xavf-rang);
+.tahrirlash:hover {
+    background-color: rgba(59, 130, 246, 0.1);
 }
 
-.ochirish-tugma:hover {
+.ochirish {
+    color: var(--ochirish-rang);
+}
+
+.ochirish:hover {
     background-color: rgba(239, 68, 68, 0.1);
 }
 
-/* Pastki qism uslublari */
-.pastki-qism {
-    background-color: var(--asosiy-qorongi);
-    color: var(--matn-och);
-    padding: 1.5rem 0;
-    text-align: center;
-    margin-top: 2rem;
+/* ===== TEMA ALMASHTIRGICH TUGMA ===== */
+.tema-almashtirgich {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--asosiy-rang);
+    color: white;
+    border: none;
+    box-shadow: var(--katta-soya);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--animatsiya-vaqti), transform 0.3s;
 }
 
-/* Moslashuvchan dizayn */
-@media (max-width: 768px) {
-    .sarlavha-nomi {
-        font-size: 1.5rem;
+.tema-almashtirgich:hover {
+    background-color: var(--asosiy-rang-och);
+    transform: scale(1.1);
+}
+
+.tema-almashtirgich .fa-sun {
+    display: none;
+}
+
+.tema-almashtirgich .fa-moon {
+    display: block;
+}
+
+.yorug-tema .tema-almashtirgich .fa-sun {
+    display: block;
+}
+
+.yorug-tema .tema-almashtirgich .fa-moon {
+    display: none;
+}
+
+/* ===== MOSLASHUVCHAN DIZAYN ===== */
+@media (max-width: 1024px) {
+    .konteyner {
+        padding: 16px 12px;
     }
     
-    .bolim-sarlavha {
-        font-size: 1.25rem;
+    .asosiy-mazmun {
+        padding: 24px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .talabalar-jadval th,
+    .talabalar-jadval td {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+    
+    .royhati-sarlavha {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .asosiy-mazmun {
+        padding: 16px 12px;
     }
     
     .jadval-konteyner {
-        overflow-x: auto;
+        margin: 0 -12px;
+        width: calc(100% + 24px);
+        border-radius: 0;
+    }
+    
+    .talabalar-jadval {
+        border-radius: 0;
+    }
+    
+    .tema-almashtirgich {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
     }
 }

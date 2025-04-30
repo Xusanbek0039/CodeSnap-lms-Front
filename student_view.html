@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O'quvchi Ma'lumotlari</title>
+  <link rel="stylesheet" href="css/student_view.css">
+  <link rel="stylesheet" href="css/aside.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<div id="sidebar-placeholder"></div>
+
+<body class="tana">
+  <div class="konteyner">
+    <div class="sarlavha">
+      <h1 style="color: white;">O'quvchi ma'lumotlari</h1>
+      <div class="amallar">
+        <button class="taxrirlash-tugma">
+          Tahrirlash
+        </button>
+        <button class="ochirish-tugma">
+          O'chirish
+        </button>
+        
+      </div>
+    </div>
+    
+    <div class="malumot-konteyner">
+      <div class="profil-qismi">
+        <div class="profil-rasm">
+          <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg" alt="O'quvchi rasmi">
+        </div>
+        <div class="asosiy-malumot">
+          <h2 class="ism">Abdullayev Abdulla</h2>
+          <p class="yonalish">Dasturlash</p>
+          <p class="yonalish"> So'ngi faollik: 2025.04.20 15:00</p>
+        </div>
+      </div>
+      
+      <div class="malumotlar">
+        <div class="malumot-guruh">
+          <div class="malumot-element">
+            <span class="label">Tug'ilgan sana:</span>
+            <span class="qiymat">15.03.2000</span>
+          </div>
+          <div class="malumot-element">
+            <span class="label">Email:</span>
+            <span class="qiymat">abdulla@example.com</span>
+          </div>
+        </div>
+        
+        <div class="malumot-guruh">
+          <div class="malumot-element">
+            <span class="label">Telefon:</span>
+            <span class="qiymat">+998 90 123 45 67</span>
+          </div>
+          <div class="malumot-element">
+            <span class="label">Manzil:</span>
+            <span class="qiymat">Toshkent sh., Chilonzor tumani</span>
+          </div>
+        </div>
+        
+        <div class="malumot-guruh">
+          <div class="malumot-element">
+            <span class="label">Jinsi:</span>
+            <span class="qiymat">Erkak</span>
+          </div>
+          <div class="malumot-element">
+            <span class="label">O'qish joyi:</span>
+            <span class="qiymat">TATU</span>
+          </div>
+        </div>
+        
+        <div class="malumot-guruh">
+          <div class="malumot-element">
+            <span class="label">O'qish joyi darajasi:</span>
+            <span class="qiymat">Universitet</span>
+          </div>
+          <div class="malumot-element">
+            <span class="label">Yo'nalish:</span>
+            <span class="qiymat">Dasturlash</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('rejimTugmasi').addEventListener('click', function() {
+      document.body.classList.toggle('yorug-rejim');
+      const quyosh = document.querySelector('.quyosh');
+      const oy = document.querySelector('.oy');
+      
+      if (document.body.classList.contains('yorug-rejim')) {
+        quyosh.style.display = 'none';
+        oy.style.display = 'block';
+      } else {
+        quyosh.style.display = 'block';
+        oy.style.display = 'none';
+      }
+    });
+  </script>
+    <script src="js/aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            // For this demo, we'll load it from aside.html
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O'quvchi Qo'shish</title>
+  <link rel="stylesheet" href="css/student_qoshish.css">
+  <link rel="stylesheet" href="css/aside.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    label{
+        color: #ffffff;
+    }
+  </style>
+</head>
+<div id="sidebar-placeholder"></div>
+
+<body class="tana" style=" color: #ffffff;">
+  <div class="konteyner">
+    <div class="sarlavha">
+      
+    </div>
+    <h1 style="color: white">O'quvchi qo'shish</h1>
+
+    <div class="forma-konteyner">
+        
+      <div class="profil-qismi">
+        <div class="profil-rasm-konteyner">
+          <div class="profil-rasm" id="profilRasm">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="profil-standart">
+              <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M20 21C20 16.5817 16.4183 13 12 13C7.58172 13 4 16.5817 4 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <img id="profilRasmPreview" class="rasm-preview" style="display: none;">
+          </div>
+
+          <label for="profil" class="profil-yuklash">
+            Rasmni tanlang
+            <input type="file" id="profil" accept="image/*" class="yashirin">
+          </label>
+        </div>
+      </div>
+      
+      <div class="forma-qismi">
+        <form id="oquvchiForma">
+          <div class="forma-qator">
+            <div class="forma-guruh">
+              <label for="ism">Ism</label>
+              <input type="text" id="ism" name="ism" class="kiritish-maydoni" required>
+            </div>
+            <div class="forma-guruh">
+              <label for="familiya">Familiya</label>
+              <input type="text" id="familiya" name="familiya" class="kiritish-maydoni" required>
+            </div>
+          </div>
+          
+          <div class="forma-qator">
+            <div class="forma-guruh">
+              <label for="tugilganSana">Tug'ilgan sana</label>
+              <input type="date" id="tugilganSana" name="tugilganSana" class="kiritish-maydoni" required>
+            </div>
+            <div class="forma-guruh">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" class="kiritish-maydoni" required>
+            </div>
+          </div>
+          
+          <div class="forma-qator">
+            <div class="forma-guruh">
+              <label for="parol">Parol</label>
+              <input type="password" id="parol" name="parol" class="kiritish-maydoni" required>
+              <div class="parol-kuch">
+                <div class="kuch-indikator">
+                  <span class="indikator" id="kuchIndikator"></span>
+                </div>
+                <span class="kuch-tekst" id="kuchTekst">Parol kuchi</span>
+              </div>
+            </div>
+            <div class="forma-guruh">
+              <label for="parolTasdiq">Parolni tasdiqlash</label>
+              <input type="password" id="parolTasdiq" name="parolTasdiq" class="kiritish-maydoni" required>
+              <div class="parol-xatolik" id="parolXatolik"></div>
+            </div>
+          </div>
+          
+          <div class="forma-qator">
+            <div class="forma-guruh">
+              <label for="telefon">Telefon raqam</label>
+              <input type="tel" id="telefon" name="telefon" class="kiritish-maydoni" placeholder="+998 90 123 45 67" required>
+            </div>
+            <div class="forma-guruh">
+              <label for="manzil">Manzil</label>
+              <input type="text" id="manzil" name="manzil" class="kiritish-maydoni" required>
+            </div>
+          </div>
+          
+          <div class="forma-qator">
+            <div class="forma-guruh">
+              <label>Jinsi</label>
+              <div class="radio-guruh">
+                <div class="radio-element">
+                  <input type="radio" id="erkak" name="jins" value="erkak" checked>
+                  <label for="erkak">Erkak</label>
+                </div>
+                <div class="radio-element">
+                  <input type="radio" id="ayol" name="jins" value="ayol">
+                  <label for="ayol">Ayol</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="forma-qator">
+            <div class="forma-guruh">
+              <label for="oquvJoyi">O'qish joyi</label>
+              <input type="text" id="oquvJoyi" name="oquvJoyi" class="kiritish-maydoni" required>
+            </div>
+            <div class="forma-guruh">
+              <label for="oquvDarajasi">O'qish joyi darajasi</label>
+              <select id="oquvDarajasi" name="oquvDarajasi" class="kiritish-maydoni" required>
+                <option value="" disabled selected>Tanlang</option>
+                <option value="maktab">Maktab</option>
+                <option value="litsey">Litsey</option>
+                <option value="kollej">Kollej</option>
+                <option value="institut">Institut</option>
+                <option value="universitet">Universitet</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="forma-qator">
+            <div class="forma-guruh toliq-kenglik">
+              <label for="yonalish">Yo'nalish</label>
+              <select id="yonalish" name="yonalish" class="kiritish-maydoni" required>
+                <option value="" disabled selected>Yo'nalishni tanlang</option>
+                <option value="dasturlash">Dasturlash</option>
+                <option value="dizayn">Grafik dizayn</option>
+                <option value="marketing">Marketing</option>
+                <option value="buxgalteriya">Buxgalteriya</option>
+                <option value="chet-tili">Chet tillari</option>
+                <option value="matematika">Matematika</option>
+                <option value="fizika">Fizika</option>
+                <option value="kimyo">Kimyo</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="forma-tugmalari">
+            <button type="button" class="bekor-tugmasi">Bekor qilish</button>
+            <button type="submit" class="saqlash-tugmasi">Saqlash</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="js/aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            // For this demo, we'll load it from aside.html
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+        });
+    </script>
+  <script>
+    // Profil rasm yuklash
+    document.getElementById('profil').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const preview = document.getElementById('profilRasmPreview');
+          preview.src = e.target.result;
+          preview.style.display = 'block';
+          document.querySelector('.profil-standart').style.display = 'none';
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Parol kuchini tekshirish
+    document.getElementById('parol').addEventListener('input', function() {
+      const parol = this.value;
+      const kuchIndikator = document.getElementById('kuchIndikator');
+      const kuchTekst = document.getElementById('kuchTekst');
+      
+      // Parolni tekshirish
+      const length = parol.length;
+      const hasLower = /[a-z]/.test(parol);
+      const hasUpper = /[A-Z]/.test(parol);
+      const hasNumber = /[0-9]/.test(parol);
+      const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(parol);
+      
+      let strength = 0;
+      if (length > 6) strength += 1;
+      if (length > 10) strength += 1;
+      if (hasLower) strength += 1;
+      if (hasUpper) strength += 1;
+      if (hasNumber) strength += 1;
+      if (hasSpecial) strength += 1;
+      
+      // Kuchni o'rnatish
+      if (strength === 0) {
+        kuchIndikator.style.width = '0%';
+        kuchIndikator.style.backgroundColor = '#f87171';
+        kuchTekst.textContent = 'Juda zaif';
+      } else if (strength <= 2) {
+        kuchIndikator.style.width = '33%';
+        kuchIndikator.style.backgroundColor = '#f87171';
+        kuchTekst.textContent = 'Zaif';
+      } else if (strength <= 4) {
+        kuchIndikator.style.width = '66%';
+        kuchIndikator.style.backgroundColor = '#facc15';
+        kuchTekst.textContent = 'O\'rta';
+      } else {
+        kuchIndikator.style.width = '100%';
+        kuchIndikator.style.backgroundColor = '#4ade80';
+        kuchTekst.textContent = 'Kuchli';
+      }
+    });
+
+    // Parolni tasdiqlash
+    document.getElementById('parolTasdiq').addEventListener('input', function() {
+      const parol = document.getElementById('parol').value;
+      const parolTasdiq = this.value;
+      const parolXatolik = document.getElementById('parolXatolik');
+      
+      if (parol !== parolTasdiq) {
+        parolXatolik.textContent = 'Parollar mos kelmadi';
+      } else {
+        parolXatolik.textContent = '';
+      }
+    });
+
+    // Rejim o'zgartirish
+    document.getElementById('rejimTugmasi').addEventListener('click', function() {
+      document.body.classList.toggle('yorug-rejim');
+      const quyosh = document.querySelector('.quyosh');
+      const oy = document.querySelector('.oy');
+      
+      if (document.body.classList.contains('yorug-rejim')) {
+        quyosh.style.display = 'none';
+        oy.style.display = 'block';
+      } else {
+        quyosh.style.display = 'block';
+        oy.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
