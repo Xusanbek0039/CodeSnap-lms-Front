@@ -3,102 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Sidebar Navigation - Index</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <title>Blog Sahifasi</title>
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/aside.css">
-    <style>
-        /* Additional styles for the index page */
-        .content-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        body.dark .feature-card {
-            background: #1f2937;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .feature-card h3 {
-            margin-bottom: 10px;
-            color: #4f46e5;
-        }
-        
-        body.dark .feature-card h3 {
-            color: #818cf8;
-        }
-        
-        .page-header {
-            margin-bottom: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
 </head>
-<body class="light">
-    <!-- The sidebar component will be loaded here via JS -->
+<body class="tana">
     <div id="sidebar-placeholder"></div>
-    
-    <!-- Main Content Area -->
-    <main id="mainContent">
-        <div class="content-container">
-            <div class="page-header">
-                <h1>Ta'lim platformasi boshqaruv paneli</h1>
-                <p>Marhamat, chapdan kerakli bo'limni tanlang yoki quyidagi funktsiyalarni ko'rib chiqing.</p>
-            </div>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>O'quvchilar boshqaruvi</h3>
-                    <p>O'quvchilarni ro'yxatga olish, ularning ma'lumotlarini tahrirlash va o'qish jarayonini kuzatish.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>O'qituvchilar faoliyati</h3>
-                    <p>O'qituvchilar faoliyati, dars jadvali va natijalarini nazorat qilish.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Kurslar katalogi</h3>
-                    <p>Barcha mavjud kurslar, ularning tavsifi va o'quv dasturlari bilan tanishing.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Statistik ma'lumotlar</h3>
-                    <p>O'quv platformasi faoliyati bo'yicha batafsil tahliliy ma'lumotlar.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Yo'nalishlar</h3>
-                    <p>Ta'lim yo'nalishlari va ular bo'yicha tavsiyalar.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3>Video materiallar</h3>
-                    <p>YouTube kanalimizda joylashtirilgan video darslar to'plami.</p>
-                </div>
-            </div>
-        </div>
-    </main>
 
+    <input type="checkbox" id="rejimAlmashtirish" class="rejimKirish">
+    
+    <div class="asosiyKonteyner">
+        <main class="asosiyMazmun">
+            <section class="blogBoʻlimi">
+                <h2 class="boʻlimSarlavhasi">Eng Soʻnggi Bloglar</h2>
+                
+                <div class="bloglarKonteyner">
+                    <!-- Blog 1 -->
+                    <article class="blogMaqola">
+                        <div class="blogRasm">
+                            <img src="https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg" alt="Tabiat manzarasi" class="maqolaRasm">
+                        </div>
+                        <div class="blogMazmun">
+                            <h3 class="maqolaSarlavha">Tabiatning ajoyib sirlari</h3>
+                            <div class="maqolaMaʼlumot">
+                                <p class="maqolaMuallif">Muallif: Alisher Navoiy</p>
+                                <p class="maqolaSana">15.08.2025</p>
+                            </div>
+                            <p class="maqolaMatn">Tabiatning go'zalligi va uning ajoyib sirlari haqida qiziqarli ma'lumotlar...</p>
+                            <a href="#" class="koʻproqTugma">Ko'proq o'qish</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog 2 -->
+                    <article class="blogMaqola">
+                        <div class="blogRasm">
+                            <img src="https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg" alt="Texnologiya" class="maqolaRasm">
+                        </div>
+                        <div class="blogMazmun">
+                            <h3 class="maqolaSarlavha">Zamonaviy texnologiyalar</h3>
+                            <div class="maqolaMaʼlumot">
+                                <p class="maqolaMuallif">Muallif: Bobur Mirzo</p>
+                                <p class="maqolaSana">10.08.2025</p>
+                            </div>
+                            <p class="maqolaMatn">Bugungi kunda rivojlanib borayotgan texnologiyalar va ularning hayotimizdagi o'rni...</p>
+                            <a href="#" class="koʻproqTugma">Ko'proq o'qish</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog 3 -->
+                    <article class="blogMaqola">
+                        <div class="blogRasm">
+                            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" alt="Sayyohat" class="maqolaRasm">
+                        </div>
+                        <div class="blogMazmun">
+                            <h3 class="maqolaSarlavha">Dunyo bo'ylab sayohat</h3>
+                            <div class="maqolaMaʼlumot">
+                                <p class="maqolaMuallif">Muallif: Gulnora Karimova</p>
+                                <p class="maqolaSana">05.08.2025</p>
+                            </div>
+                            <p class="maqolaMatn">Turli mamlakatlarga qilingan sayohatlar va ularning o'ziga xos madaniyati haqida...</p>
+                            <a href="#" class="koʻproqTugma">Ko'proq o'qish</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog 4 -->
+                    <article class="blogMaqola">
+                        <div class="blogRasm">
+                            <img src="https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg" alt="Oshxona" class="maqolaRasm">
+                        </div>
+                        <div class="blogMazmun">
+                            <h3 class="maqolaSarlavha">Milliy taomlarimiz</h3>
+                            <div class="maqolaMaʼlumot">
+                                <p class="maqolaMuallif">Muallif: Ziyoda Qosimova</p>
+                                <p class="maqolaSana">01.08.2025</p>
+                            </div>
+                            <p class="maqolaMatn">O'zbek milliy taomlari va ularni tayyorlash usullari. Palov, somsa, lag'mon...</p>
+                            <a href="#" class="koʻproqTugma">Ko'proq o'qish</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog 5 -->
+                    <article class="blogMaqola">
+                        <div class="blogRasm">
+                            <img src="https://images.pexels.com/photos/267389/pexels-photo-267389.jpeg" alt="Sport" class="maqolaRasm">
+                        </div>
+                        <div class="blogMazmun">
+                            <h3 class="maqolaSarlavha">Sport va sog'lom turmush</h3>
+                            <div class="maqolaMaʼlumot">
+                                <p class="maqolaMuallif">Muallif: Jahongir Usmonov</p>
+                                <p class="maqolaSana">28.07.2025</p>
+                            </div>
+                            <p class="maqolaMatn">Sog'lom turmush tarzi va sport bilan shug'ullanishning foydali jihatlari...</p>
+                            <a href="#" class="koʻproqTugma">Ko'proq o'qish</a>
+                        </div>
+                    </article>
+
+                    <!-- Blog 6 -->
+                    <article class="blogMaqola">
+                        <div class="blogRasm">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdCcs34UTCabzv5s_zTCmwUr6KXGtVkqPlTw&s" alt="Kitoblar" class="maqolaRasm">
+                        </div>
+                        <div class="blogMazmun">
+                            <h3 class="maqolaSarlavha">Kitoblar olami</h3>
+                            <div class="maqolaMaʼlumot">
+                                <p class="maqolaMuallif">Muallif: Nodira Rahimova</p>
+                                <p class="maqolaSana">20.07.2025</p>
+                            </div>
+                            <p class="maqolaMatn">Eng mashhur va o'qishga arzigulik kitoblar haqida ma'lumotlar va tavsiyalar...</p>
+                            <a href="#" class="koʻproqTugma">Ko'proq o'qish</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
     <script src="js/aside.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'quv Markaz Statistikasi</title>
+    <link rel="stylesheet" href="css/statistika.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+    <div class="asosiy_konteyner">
+        <header class="sarlavha_qism">
+            <h1 class="bosh_sarlavha">O'quv Markaz Statistikasi</h1>
+            <p class="qoshimcha_sarlavha">Jonli ma'lumotlar tahlili</p>
+            <div class="jonli_holat">
+                <span class="jonli_nuqta"></span>
+                Hozirda faol o'quvchilar: <span class="jonli_raqam">234</span>
+            </div>
+        </header>
+
+        <div class="malumotlar_tarmogi">
+            <!-- Umumiy O'quvchilar -->
+            <div class="malumot_kartasi talabalar">
+                <div class="belgi_qism">👥</div>
+                <div class="karta_tarkibi">
+                    <h3 class="karta_nomi">Jami O'quvchilar</h3>
+                    <div class="raqam_qiymati" data-value="27179">0</div>
+                    <div class="progress_qism">
+                        <div class="progress_holati" style="width: 85%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faol O'quvchilar -->
+            <div class="malumot_kartasi faol">
+                <div class="belgi_qism">🎯</div>
+                <div class="karta_tarkibi">
+                    <h3 class="karta_nomi">Faol O'quvchilar</h3>
+                    <div class="raqam_qiymati" data-value="12458">0</div>
+                    <div class="progress_qism">
+                        <div class="progress_holati" style="width: 65%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tugatganlar -->
+            <div class="malumot_kartasi bitiruvchilar">
+                <div class="belgi_qism">🎓</div>
+                <div class="karta_tarkibi">
+                    <h3 class="karta_nomi">Bitiruvchilar</h3>
+                    <div class="raqam_qiymati" data-value="8934">0</div>
+                    <div class="progress_qism">
+                        <div class="progress_holati" style="width: 45%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yangi O'quvchilar -->
+            <div class="malumot_kartasi yangi">
+                <div class="belgi_qism">✨</div>
+                <div class="karta_tarkibi">
+                    <h3 class="karta_nomi">Yangi O'quvchilar</h3>
+                    <div class="raqam_qiymati" data-value="1547">0</div>
+                    <div class="progress_qism">
+                        <div class="progress_holati" style="width: 25%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yangi: Muvaffaqiyat Ko'rsatkichlari -->
+        <div class="yutuqlar_qismi">
+            <h2 class="bolim_sarlavha">Muvaffaqiyat Ko'rsatkichlari</h2>
+            <div class="yutuqlar_tarmogi">
+                <div class="yutuq_kartasi">
+                    <div class="yutuq_icon">💼</div>
+                    <div class="yutuq_raqam" data-value="85">0%</div>
+                    <div class="yutuq_nomi">Ishga joylashish</div>
+                </div>
+                <div class="yutuq_kartasi">
+                    <div class="yutuq_icon">🌟</div>
+                    <div class="yutuq_raqam" data-value="95">0%</div>
+                    <div class="yutuq_nomi">O'quvchilar bahosi</div>
+                </div>
+                <div class="yutuq_kartasi">
+                    <div class="yutuq_icon">📈</div>
+                    <div class="yutuq_raqam" data-value="78">0%</div>
+                    <div class="yutuq_nomi">Oylik o'sish</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tahlil_qismi">
+            <!-- Kurslar Bo'yicha Taqsimot -->
+            <div class="tahlil_kartasi">
+                <h3 class="bolim_sarlavha">Kurslar Bo'yicha Taqsimot</h3>
+                <div class="diagramma">
+                    <div class="ustun" style="width: 80%">
+                        <span class="ustun_nomi">Frontend</span>
+                        <span class="ustun_qiymati">8,245</span>
+                    </div>
+                    <div class="ustun" style="width: 65%">
+                        <span class="ustun_nomi">Backend</span>
+                        <span class="ustun_qiymati">6,721</span>
+                    </div>
+                    <div class="ustun" style="width: 45%">
+                        <span class="ustun_nomi">Mobile</span>
+                        <span class="ustun_qiymati">4,632</span>
+                    </div>
+                    <div class="ustun" style="width: 35%">
+                        <span class="ustun_nomi">UI/UX</span>
+                        <span class="ustun_qiymati">3,581</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oylik O'sish -->
+            <div class="tahlil_kartasi">
+                <h3 class="bolim_sarlavha">Oylik O'sish</h3>
+                <div class="oylik_osish">
+                    <div class="doira_progress">
+                        <svg viewBox="0 0 36 36" class="doira_diagramma">
+                            <path d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none"
+                                stroke="#444"
+                                stroke-width="3"
+                            />
+                            <path d="M18 2.0845
+                                a 15.9155 15.9155 0 0 1 0 31.831
+                                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none"
+                                stroke="#3e8fff"
+                                stroke-width="3"
+                                stroke-dasharray="75, 100"
+                            />
+                        </svg>
+                        <div class="foiz_qiymati">75%</div>
+                    </div>
+                    <p class="qoshimcha_matn">O'tgan oyga nisbatan o'sish</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yangi: Top O'qituvchilar -->
+        <div class="oqituvchilar_qismi">
+            <h2 class="bolim_sarlavha">Top O'qituvchilar</h2>
+            <div class="oqituvchilar_tarmogi">
+                <div class="oqituvchi_kartasi">
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="O'qituvchi" class="oqituvchi_rasmi">
+                    <div class="oqituvchi_malumot">
+                        <h3>Anvar Narzullayev</h3>
+                        <p>Python & Backend</p>
+                        <div class="reyting">⭐ 4.9</div>
+                    </div>
+                </div>
+                <div class="oqituvchi_kartasi">
+                    <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg" alt="O'qituvchi" class="oqituvchi_rasmi">
+                    <div class="oqituvchi_malumot">
+                        <h3>Samar Badriddinov</h3>
+                        <p>Frontend & React</p>
+                        <div class="reyting">⭐ 4.8</div>
+                    </div>
+                </div>
+                <div class="oqituvchi_kartasi">
+                    <img src="https://images.pexels.com/photos/1181695/pexels-photo-1181695.jpeg" alt="O'qituvchi" class="oqituvchi_rasmi">
+                    <div class="oqituvchi_malumot">
+                        <h3>Ulug'bek Samigjonov</h3>
+                        <p>Mobile Development</p>
+                        <div class="reyting">⭐ 4.9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Existing animations
+            const raqamlar = document.querySelectorAll('.raqam_qiymati, .yutuq_raqam');
+            raqamlar.forEach(raqam => {
+                const yakuniyQiymat = parseInt(raqam.dataset.value);
+                let joriyQiymat = 0;
+                const qadamQiymati = yakuniyQiymat / 100;
+                const davomiyligi = 2000;
+                const qadamlarSoni = 100;
+                const qadamVaqti = davomiyligi / qadamlarSoni;
+
+                const hisoblagich = setInterval(() => {
+                    joriyQiymat += qadamQiymati;
+                    if (joriyQiymat >= yakuniyQiymat) {
+                        raqam.textContent = raqam.classList.contains('yutuq_raqam') ? 
+                            `${yakuniyQiymat}%` : yakuniyQiymat.toLocaleString();
+                        clearInterval(hisoblagich);
+                    } else {
+                        raqam.textContent = raqam.classList.contains('yutuq_raqam') ? 
+                            `${Math.floor(joriyQiymat)}%` : Math.floor(joriyQiymat).toLocaleString();
+                    }
+                }, qadamVaqti);
+            });
+
+            // Animate all cards
+            const kartalar = document.querySelectorAll('.malumot_kartasi, .tahlil_kartasi, .yutuq_kartasi, .oqituvchi_kartasi');
+            kartalar.forEach((karta, index) => {
+                setTimeout(() => {
+                    karta.classList.add('paydo_bolish');
+                }, 100 * index);
+            });
+
+            // Animate progress bars and columns
+            const ustunlar = document.querySelectorAll('.progress_holati, .ustun');
+            setTimeout(() => {
+                ustunlar.forEach(ustun => {
+                    ustun.style.width = ustun.style.width;
+                    ustun.classList.add('ustun_animatsiya');
+                });
+            }, 500);
+
+            // Live counter animation
+            setInterval(() => {
+                const jonliRaqam = document.querySelector('.jonli_raqam');
+                const currentValue = parseInt(jonliRaqam.textContent);
+                const change = Math.floor(Math.random() * 7) - 3; // Random change between -3 and +3
+                jonliRaqam.textContent = Math.max(200, Math.min(300, currentValue + change));
+            }, 2000);
+        });
+    </script>
+    
+    <script src="js/aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            // For this demo, we'll load it from aside.html
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+        });
+    </script>
+    
+</body>
+</html>

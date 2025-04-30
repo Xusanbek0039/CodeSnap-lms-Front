@@ -1,0 +1,465 @@
+/* Asosiy sozlamalar */
+:root {
+    /* Ranglar - kechki rejim */
+    --asosiyRang: #3B82F6;
+    --ikkinchiRang: #14B8A6;
+    --aksentRang: #F97316;
+    --muvaffaqRang: #10B981;
+    --ogohlantirishRang: #F59E0B;
+    --xatoRang: #EF4444;
+    
+    /* Neytral ranglar - kechki rejim */
+    --matnRang: rgba(255, 255, 255, 0.87);
+    --orqaFon: #1A1A1A;
+    --kartaFon: #2A2A2A;
+    --chegara: #3A3A3A;
+    --yorqinRang: rgba(255, 255, 255, 0.1);
+    
+    /* Masofa */
+    --masofa-8: 8px;
+    --masofa-16: 16px;
+    --masofa-24: 24px;
+    --masofa-32: 32px;
+    --masofa-48: 48px;
+    
+    /* Soyalar */
+    --kattaSoya: 0 10px 25px rgba(0, 0, 0, 0.3);
+    --ortaSoya: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --kichikSoya: 0 2px 8px rgba(0, 0, 0, 0.15);
+    
+    /* Animatsiyalar */
+    --tezOʻtish: 0.3s ease;
+}
+
+/* Rejim almashtirish - kechki/ertalabgi */
+.rejimKirish {
+    display: none;
+}
+
+.rejimKirish:checked ~ .asosiyKonteyner {
+    /* Ertalabgi rejim ranglari */
+    --matnRang: #213547;
+    --orqaFon: #F8FAFC;
+    --kartaFon: #FFFFFF;
+    --chegara: #E2E8F0;
+    --yorqinRang: rgba(0, 0, 0, 0.05);
+}
+
+/* Asosiy stil */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--matnRang);
+    background-color: var(--orqaFon);
+    transition: background-color var(--tezOʻtish), color var(--tezOʻtish);
+}
+
+.asosiyKonteyner {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sarlavha stili */
+.sarlavha {
+    background-color: var(--kartaFon);
+    box-shadow: var(--kichikSoya);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: background-color var(--tezOʻtish), box-shadow var(--tezOʻtish);
+}
+
+.sarlavhaKonteyner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--masofa-16);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.asosiyNom {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--asosiyRang);
+    margin-right: var(--masofa-24);
+}
+
+.navigatsiya {
+    flex-grow: 1;
+}
+
+.menyuRoyxati {
+    display: flex;
+    list-style: none;
+    gap: var(--masofa-24);
+}
+
+.menyuHavola {
+    color: var(--matnRang);
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--masofa-8);
+    transition: color var(--tezOʻtish);
+    position: relative;
+}
+
+.menyuHavola:hover {
+    color: var(--asosiyRang);
+}
+
+.menyuHavola:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--asosiyRang);
+    transition: width var(--tezOʻtish);
+}
+
+.menyuHavola:hover:after {
+    width: 100%;
+}
+
+/* Rejim tugmasi stili */
+.rejimTugmasi {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: var(--chegara);
+    border-radius: 15px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color var(--tezOʻtish);
+}
+
+.rejimKoʻrsatgich {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--kartaFon);
+    box-shadow: var(--kichikSoya);
+    transition: transform var(--tezOʻtish), background-color var(--tezOʻtish);
+}
+
+.rejimKirish:checked ~ .asosiyKonteyner .rejimKoʻrsatgich {
+    transform: translateX(30px);
+}
+
+.quyoshBelgisi, .oyBelgisi {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    transition: opacity var(--tezOʻtish);
+}
+
+.quyoshBelgisi {
+    right: 10px;
+    opacity: 0;
+}
+
+.oyBelgisi {
+    left: 10px;
+    opacity: 1;
+}
+
+.rejimKirish:checked ~ .asosiyKonteyner .quyoshBelgisi {
+    opacity: 1;
+}
+
+.rejimKirish:checked ~ .asosiyKonteyner .oyBelgisi {
+    opacity: 0;
+}
+
+/* Asosiy mazmun */
+.asosiyMazmun {
+    flex: 1;
+    padding: var(--masofa-32) var(--masofa-16);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Maqola konteyner */
+.maqolaKonteyner {
+    background-color: var(--kartaFon);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--ortaSoya);
+    margin-bottom: var(--masofa-48);
+}
+
+.maqolaRasmKonteyner {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.maqolaAsosiyRasm {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.maqolaMaʼlumotlar {
+    padding: var(--masofa-32);
+}
+
+.maqolaSarlavha {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--masofa-24);
+    color: var(--matnRang);
+}
+
+.maqolaMetaMaʼlumot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--masofa-32);
+    padding-bottom: var(--masofa-24);
+    border-bottom: 1px solid var(--chegara);
+}
+
+.muallifMaʼlumot {
+    display: flex;
+    align-items: center;
+    gap: var(--masofa-16);
+}
+
+.muallifRasmi {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.muallifTafsilot {
+    display: flex;
+    flex-direction: column;
+}
+
+.muallifIsmi {
+    font-weight: 500;
+    color: var(--matnRang);
+}
+
+.nashrSanasi {
+    font-size: 0.875rem;
+    color: var(--ikkinchiRang);
+}
+
+.oʻqishVaqti {
+    font-size: 0.875rem;
+    color: var(--ikkinchiRang);
+}
+
+/* Maqola mazmuni */
+.maqolaMazmuniKonteyner {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: var(--masofa-32);
+}
+
+.maqolaBoʻlimSarlavha {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: var(--masofa-32) 0 var(--masofa-16);
+    color: var(--matnRang);
+}
+
+.maqolaParagraf {
+    margin-bottom: var(--masofa-24);
+    color: var(--matnRang);
+}
+
+.maqolaRasmlar {
+    margin: var(--masofa-32) 0;
+}
+
+.rasmFigure {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.maqolaQoʻshimchaRasm {
+    width: 100%;
+    height: auto;
+}
+
+.rasmIzoh {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--ikkinchiRang);
+    margin-top: var(--masofa-8);
+}
+
+.maqolaIqtibos {
+    margin: var(--masofa-32) 0;
+    padding: var(--masofa-24);
+    border-left: 4px solid var(--aksentRang);
+    background-color: var(--yorqinRang);
+    font-size: 1.25rem;
+    font-style: italic;
+}
+
+.maqolaIqtibos cite {
+    display: block;
+    margin-top: var(--masofa-8);
+    font-size: 1rem;
+    color: var(--ikkinchiRang);
+}
+
+/* Taglar */
+.maqolaTaglar {
+    display: flex;
+    gap: var(--masofa-8);
+    margin-bottom: var(--masofa-24);
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: var(--masofa-8) var(--masofa-16);
+    background-color: var(--yorqinRang);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: var(--matnRang);
+    transition: background-color var(--tezOʻtish);
+}
+
+.tag:hover {
+    background-color: var(--asosiyRang);
+    color: white;
+}
+
+/* Ulashish tugmalari */
+.ulashishTugmalar {
+    display: flex;
+    gap: var(--masofa-16);
+    margin-top: var(--masofa-32);
+}
+
+.ulashishTugma {
+    padding: var(--masofa-8) var(--masofa-24);
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform var(--tezOʻtish), background-color var(--tezOʻtish);
+}
+
+.ulashishTugma:hover {
+    transform: translateY(-2px);
+}
+
+.facebook {
+    background-color: #1877F2;
+    color: white;
+}
+
+.twitter {
+    background-color: #1DA1F2;
+    color: white;
+}
+
+.telegram {
+    background-color: #0088cc;
+    color: white;
+}
+
+/* Pastki qism */
+.pastQism {
+    background-color: var(--kartaFon);
+    padding: var(--masofa-24) var(--masofa-16);
+    margin-top: auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pastQismKonteyner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--masofa-16);
+}
+
+.muallifHuquq {
+    color: var(--matnRang);
+    opacity: 0.7;
+}
+
+.ijtimoiyTarmoqlar {
+    display: flex;
+    gap: var(--masofa-16);
+}
+
+.ijtimoiyHavola {
+    color: var(--matnRang);
+    text-decoration: none;
+    transition: color var(--tezOʻtish);
+}
+
+.ijtimoiyHavola:hover {
+    color: var(--asosiyRang);
+}
+
+/* Media so'rovlar */
+@media (max-width: 768px) {
+    .sarlavhaKonteyner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--masofa-16);
+    }
+    
+    .asosiyNom {
+        margin-right: 0;
+    }
+    
+    .menyuRoyxati {
+        flex-wrap: wrap;
+        gap: var(--masofa-16);
+    }
+    
+    .rejimTugmasi {
+        margin-top: var(--masofa-16);
+        align-self: flex-end;
+    }
+    
+    .maqolaMetaMaʼlumot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--masofa-16);
+    }
+    
+    .ulashishTugmalar {
+        flex-wrap: wrap;
+    }
+    
+    .pastQismKonteyner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ijtimoiyTarmoqlar {
+        justify-content: center;
+    }
+}

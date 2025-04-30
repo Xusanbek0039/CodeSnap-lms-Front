@@ -1,0 +1,360 @@
+:root {
+    --asosiy: #3e8fff;
+    --ikkilamchi: #14b8a6;
+    --urguli: #f97316;
+    --muvaffaqiyat: #10b981;
+    --fon: #0f172a;
+    --karta-fon: #1e293b;
+    --matn-asosiy: #f8fafc;
+    --matn-ikkilamchi: #cbd5e1;
+    --burchak-radius: 12px;
+    --otish-normal: all 0.3s ease;
+    --soya-katta: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--fon);
+    color: var(--matn-asosiy);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+.asosiy_konteyner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sarlavha_qism {
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: yuqorigaKotarilish 0.8s ease forwards;
+}
+
+.bosh_sarlavha {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--asosiy), var(--urguli));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.qoshimcha_sarlavha {
+    color: var(--matn-ikkilamchi);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.jonli_holat {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+}
+
+.jonli_nuqta {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    animation: yonish 1s ease infinite;
+}
+
+.jonli_raqam {
+    color: var(--muvaffaqiyat);
+    font-weight: 600;
+}
+
+.malumotlar_tarmogi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.malumot_kartasi {
+    background: var(--karta-fon);
+    border-radius: var(--burchak-radius);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.malumot_kartasi.paydo_bolish {
+    animation: suzibChiqish 0.6s ease forwards;
+}
+
+.belgi_qism {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px rgba(62, 143, 255, 0.3));
+}
+
+.karta_tarkibi {
+    position: relative;
+    z-index: 1;
+}
+
+.karta_nomi {
+    font-size: 1rem;
+    color: var(--matn-ikkilamchi);
+    margin-bottom: 0.5rem;
+}
+
+.raqam_qiymati {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--matn-asosiy), var(--asosiy));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.progress_qism {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress_holati {
+    height: 100%;
+    background: linear-gradient(90deg, var(--asosiy), var(--ikkilamchi));
+    border-radius: 3px;
+    width: 0;
+    transition: width 1.5s ease-in-out;
+}
+
+.progress_holati.ustun_animatsiya {
+    width: var(--width);
+}
+
+/* Yangi: Yutuqlar qismi */
+.yutuqlar_qismi {
+    margin-bottom: 2rem;
+}
+
+.yutuqlar_tarmogi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.yutuq_kartasi {
+    background: var(--karta-fon);
+    border-radius: var(--burchak-radius);
+    padding: 1.5rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.yutuq_kartasi.paydo_bolish {
+    animation: suzibChiqish 0.6s ease forwards;
+}
+
+.yutuq_icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.yutuq_raqam {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--muvaffaqiyat);
+    margin-bottom: 0.5rem;
+}
+
+.yutuq_nomi {
+    color: var(--matn-ikkilamchi);
+    font-size: 0.9rem;
+}
+
+/* Yangi: O'qituvchilar qismi */
+.oqituvchilar_qismi {
+    margin-top: 2rem;
+}
+
+.oqituvchilar_tarmogi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.oqituvchi_kartasi {
+    background: var(--karta-fon);
+    border-radius: var(--burchak-radius);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--otish-normal);
+}
+
+.oqituvchi_kartasi.paydo_bolish {
+    animation: suzibChiqish 0.6s ease forwards;
+}
+
+.oqituvchi_rasmi {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.oqituvchi_kartasi:hover .oqituvchi_rasmi {
+    transform: scale(1.05);
+}
+
+.oqituvchi_malumot {
+    padding: 1.5rem;
+}
+
+.oqituvchi_malumot h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.oqituvchi_malumot p {
+    color: var(--matn-ikkilamchi);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.reyting {
+    color: var(--urguli);
+    font-weight: 600;
+}
+
+.tahlil_qismi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.tahlil_kartasi {
+    background: var(--karta-fon);
+    border-radius: var(--burchak-radius);
+    padding: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.tahlil_kartasi.paydo_bolish {
+    animation: suzibChiqish 0.6s ease forwards;
+}
+
+.bolim_sarlavha {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--matn-asosiy);
+}
+
+.diagramma {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ustun {
+    height: 40px;
+    background: linear-gradient(90deg, var(--asosiy), var(--ikkilamchi));
+    border-radius: var(--burchak-radius);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    width: 0;
+    transition: width 1.5s ease-in-out;
+}
+
+.ustun.ustun_animatsiya {
+    width: var(--width);
+}
+
+.ustun_nomi {
+    color: var(--matn-asosiy);
+    font-weight: 500;
+}
+
+.ustun_qiymati {
+    margin-left: auto;
+    font-weight: 600;
+}
+
+@keyframes yonish {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@keyframes yuqorigaKotarilish {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes suzibChiqish {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .bosh_sarlavha {
+        font-size: 2rem;
+    }
+
+    .malumotlar_tarmogi {
+        grid-template-columns: 1fr;
+    }
+
+    .raqam_qiymati {
+        font-size: 2rem;
+    }
+
+    .oqituvchilar_tarmogi {
+        grid-template-columns: 1fr;
+    }
+}
+
+.malumot_kartasi:hover,
+.yutuq_kartasi:hover,
+.oqituvchi_kartasi:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--soya-katta);
+    transition: var(--otish-normal);
+}
+
+.ustun:hover {
+    filter: brightness(1.1);
+    transform: scale(1.01);
+    transition: var(--otish-normal);
+}

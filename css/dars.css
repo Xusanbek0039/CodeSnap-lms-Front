@@ -1,0 +1,515 @@
+/* Asosiy stillar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --asosiy-rang: #0a1622;
+    --matn-rang: #ffffff;
+    --ikkilamchi-rang: #102030;
+    --tugma-rang: #3b82f6;
+    --progress-rang: #3b82f6;
+    --yakunlangan-rang: #10b981;
+    --yulduz-rang: #fbbf24;
+}
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+body {
+    background-color: var(--asosiy-rang);
+    color: var(--matn-rang);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #ffffff;
+
+}
+
+.kosmos-konteyner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Yulduzli fon animatsiyasi */
+.yulduz-tizimi {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(ellipse at bottom, #0d1d31 0%, #02080e 100%);
+    overflow: hidden;
+}
+
+.yulduz-tizimi::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0)),
+        radial-gradient(3px 3px at 120px 120px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+        radial-gradient(1px 1px at 230px 180px, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 420px 260px, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0));
+    background-repeat: repeat;
+    background-size: 500px 500px;
+    animation: yulduzlar-miltirash 8s infinite linear;
+    opacity: 0.5;
+}
+
+@keyframes yulduzlar-miltirash {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-500px); }
+}
+
+/* Sarlavha qismi */
+.bilim-sarlavha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.matn-qismi {
+    flex: 1;
+}
+
+.asosiy-sarlavha {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: sarlavha-kirish 1s ease-out;
+}
+
+@keyframes sarlavha-kirish {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.progress-malumot {
+    margin-top: 2rem;
+}
+
+.progress-matn {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.progress-foiz {
+    font-weight: 700;
+    color: #3b82f6;
+}
+
+.progress-tizim {
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-toldir {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(to right, #3b82f6, #60a5fa);
+    position: relative;
+    animation: progress-toldirish 2s ease-out;
+}
+
+@keyframes progress-toldirish {
+    from { width: 0%; }
+}
+
+.progress-belgilar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.belgi {
+    position: absolute;
+    top: 20px;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8rem;
+}
+
+/* Python logotipi */
+.logotip-joy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.python-logotip {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: logo-suzish 6s infinite ease-in-out;
+}
+
+.python-logotip img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.5));
+}
+
+@keyframes logo-suzish {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Kurs ma'lumot qismi */
+.kurs-mazmun {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--ikkilamchi-rang);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    animation: konteyner-kirish 0.8s ease-out 0.3s both;
+}
+
+@keyframes konteyner-kirish {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mazmun-sarlavha {
+    display: flex;
+    flex-direction: column;
+}
+
+.bolim-sarlavha {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.kurs-malumot {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.malumot-bolim {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.malumot-belgi {
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.darslar-belgi {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%233b82f6' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z'/%3E%3C/svg%3E");
+}
+
+.soat-belgi {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%233b82f6' viewBox='0 0 24 24'%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E");
+}
+
+.malumot-matn {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.baho-tugma {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.baho-konteyner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(251, 191, 36, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.yulduz-belgi {
+    color: var(--yulduz-rang);
+    font-size: 1.2rem;
+}
+
+.baho-qiymat {
+    font-weight: 600;
+    color: var(--yulduz-rang);
+}
+
+.davom-tugma {
+    background-color: var(--tugma-rang);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.davom-tugma:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.davom-tugma:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Darslar ro'yxati */
+.darslar-royhati {
+    background-color: var(--ikkilamchi-rang);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    animation: konteyner-kirish 0.8s ease-out 0.6s both;
+}
+
+.modul {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modul:last-child {
+    border-bottom: none;
+}
+
+.modul-sarlavha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modul-sarlavha:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.modul-sarlavha-matn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modul-chevron {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    color: var(--tugma-rang);
+}
+
+.modul-raqam {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.modul-progress {
+    color: var(--yakunlangan-rang);
+    font-weight: 600;
+}
+
+.modul-tarkib {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.dars {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.dars:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dars-malumot {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dars-belgi {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.yakunlangan .dars-belgi {
+    background-color: var(--yakunlangan-rang);
+    position: relative;
+}
+
+.yakunlangan .dars-belgi::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
+.dars-nomi {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dars-holat {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.yakunlangan .dars-holat {
+    background-color: var(--yakunlangan-rang);
+}
+
+/* Responsive stillar */
+@media (max-width: 992px) {
+    .kosmos-konteyner {
+        padding: 1.5rem;
+    }
+
+    .bilim-sarlavha {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .asosiy-sarlavha {
+        font-size: 2.8rem;
+    }
+
+    .logotip-joy {
+        width: 100%;
+    }
+
+    .kurs-mazmun {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .baho-tugma {
+        align-items: center;
+        width: 100%;
+    }
+
+    .davom-tugma {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .kosmos-konteyner {
+        padding: 1rem;
+    }
+
+    .asosiy-sarlavha {
+        font-size: 2.2rem;
+    }
+
+    .progress-matn {
+        font-size: 1rem;
+    }
+
+    .kurs-malumot {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .bolim-sarlavha {
+        font-size: 1.5rem;
+    }
+
+    .python-logotip {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .asosiy-sarlavha {
+        font-size: 1.8rem;
+    }
+
+    .python-logotip {
+        width: 100px;
+        height: 100px;
+    }
+
+    .modul-raqam {
+        font-size: 1.1rem;
+    }
+
+    .dars {
+        padding: 0.8rem;
+    }
+
+    .dars-nomi {
+        font-size: 0.9rem;
+    }
+}

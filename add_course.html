@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurs qo'shish</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/aside.css">
+</head>
+<body>     <div id="sidebar-placeholder"></div>
+
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div>
+                    <h1>Yangi kurs qo'shish</h1>
+                    <p class="subheading">Quyidagi shaklni to'ldirib, yangi kurs yarating</p>
+                </div>
+
+            </div>
+            
+            <form id="courseForm">
+                <div class="form-group">
+                    <label for="courseName">Yangi kurs nomi</label>
+                    <input 
+                        type="text" 
+                        id="courseName" 
+                        name="courseName" 
+                        placeholder="Kurs nomi kiriting..." 
+                        required
+                    >
+                    <div class="error-message" id="courseNameError">Kurs nomini kiriting</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="courseImage">Rasm yuklang</label>
+                    <div class="file-upload" id="fileUpload">
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="upload-text">Qurilma xotirasidan rasm yuklang</p>
+                        <p class="upload-info">Ruxsat berilgan fayllar: JPG, PNG, GIF. Max o'kcham: 5MB</p>
+                        <input 
+                            type="file" 
+                            id="courseImage" 
+                            name="courseImage" 
+                            accept="image/*"
+                        >
+                    </div>
+                    <div class="image-preview" id="imagePreview">
+                        <img id="previewImg" src="#" alt="Preview">
+                        <div class="preview-actions">
+                            <button type="button" class="remove-image" id="removeImage">
+                                <svg class="remove-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                                O'chirish
+                            </button>
+                        </div>
+                    </div>
+                    <div class="error-message" id="courseImageError">Iltimos, kurs rasmini yuklang</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="courseDescription">Kurs haqida ma'lumot</label>
+                    <textarea 
+                        id="courseDescription" 
+                        name="courseDescription" 
+                        placeholder="Kurs haqida" 
+                        maxlength="500" 
+                        required
+                    ></textarea>
+                    <div class="char-count" id="charCount">0/500</div>
+                    <div class="error-message" id="courseDescriptionError">Kurs tavsifini kiriting</div>
+                </div>
+                
+                <div class="form-actions">
+                    <div class="autosave-indicator" id="autosaveIndicator">
+                        <span class="pulse"></span>
+                        Qoralama saqlandi
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Yangi kurs yaratish</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="success-message" id="successMessage">
+        <svg class="success-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        Muvafaqiyatli kurs qo'shdingiz!
+    </div>
+    
+    <script src="js/aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            // For this demo, we'll load it from aside.html
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

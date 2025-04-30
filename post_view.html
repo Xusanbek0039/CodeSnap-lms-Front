@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Maqola Ko'rinishi</title>
+    <link rel="stylesheet" href="css/blog_view.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+</head>
+<body>
+    <input type="checkbox" id="rejimAlmashtirish" class="rejimKirish">
+    
+    <div class="asosiyKonteyner">
+        <div id="sidebar-placeholder"></div>
+
+
+        <main class="asosiyMazmun">
+            <article class="maqolaKonteyner">
+                <div class="maqolaRasmKonteyner">
+                    <img src="https://images.pexels.com/photos/2325446/pexels-photo-2325446.jpeg" alt="Tabiat manzarasi" class="maqolaAsosiyRasm">
+                </div>
+                
+                <div class="maqolaMaʼlumotlar">
+                    <h1 class="maqolaSarlavha">Tabiatning ajoyib sirlari</h1>
+                    
+                    <div class="maqolaMetaMaʼlumot">
+                        <div class="muallifMaʼlumot">
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Muallif" class="muallifRasmi">
+                            <div class="muallifTafsilot">
+                                <span class="muallifIsmi">Alisher Navoiy</span>
+                                <span class="nashrSanasi">15 Avgust, 2025</span>
+                            </div>
+                        </div>
+                        <div class="oʻqishVaqti">
+                            <span>O'qish vaqti: 7 daqiqa</span>
+                        </div>
+                    </div>
+
+                    <div class="maqolaMazmuniKonteyner">
+                        <p class="maqolaParagraf">Tabiatning go'zalligi va uning ajoyib sirlari haqida so'z yuritmoqchimiz. Har bir fasl o'zining betakror go'zalligi bilan bizni hayratga soladi. Bahorning mayin shabadasi, yozning issiq quyoshi, kuzning rang-barang barglari va qishning oppoq qori - bularning barchasi tabiatning mo'jizalaridir.</p>
+                        
+                        <h2 class="maqolaBoʻlimSarlavha">Tabiatning mo'jizalari</h2>
+                        <p class="maqolaParagraf">Tabiatda shunday hodisalar borki, ular hali-hanuz olimlar tomonidan to'liq o'rganilmagan. Masalan, shimoliy yog'du, dengiz chuqurliklaridagi hayot, vulqonlarning faoliyati va boshqalar. Bu hodisalar bizni doimo hayratga soladi va yangi kashfiyotlarga undaydi.</p>
+                        
+                        <div class="maqolaRasmlar">
+                            <figure class="rasmFigure">
+                                <img src="https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg" alt="Shimoliy yog'du" class="maqolaQoʻshimchaRasm">
+                                <figcaption class="rasmIzoh">Ajoyib shimoliy yog'du manzarasi</figcaption>
+                            </figure>
+                        </div>
+
+                        <h2 class="maqolaBoʻlimSarlavha">Tabiatni asrash</h2>
+                        <p class="maqolaParagraf">Bugungi kunda tabiatni asrash, ekologik muammolarni hal qilish eng dolzarb masalalardan biridir. Har birimiz tabiatga mehr bilan qarashimiz, uni asrab-avaylashimiz kerak. Axir, tabiat - bizning uyimiz.</p>
+                        
+                        <blockquote class="maqolaIqtibos">
+                            "Tabiat - bu eng buyuk san'atkor, u har bir detalni mukammal darajada yaratgan."
+                            <cite>- Leonardo da Vinchi</cite>
+                        </blockquote>
+                    </div>
+
+                    <div class="maqolaTaglar">
+                        <span class="tag">Tabiat</span>
+                        <span class="tag">Ekologiya</span>
+                        <span class="tag">Atrof-muhit</span>
+                    </div>
+
+                    <div class="ulashishTugmalar">
+                        <button class="ulashishTugma facebook">Facebook</button>
+                        <button class="ulashishTugma twitter">Twitter</button>
+                        <button class="ulashishTugma telegram">Telegram</button>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+    <script src="js/aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            // For this demo, we'll load it from aside.html
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

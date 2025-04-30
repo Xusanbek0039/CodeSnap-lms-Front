@@ -12,9 +12,11 @@ const mainContent = document.getElementById('mainContent');
 // Translations
 const translations = {
     uz: {
+        courses_add: "Kurs qo'shish",
         lastActive: "Oxirgi faollik: 2 kun oldin",
         profileSettings: "Profil sozlamalari",
         editProfile: "Profilni tahrirlash",
+        profile: "Shaxsiy hisob",
         changePassword: "Parolni o'zgartirish",
         logout: "Tizimdan chiqish",
         navigation: "Navigatsiya",
@@ -31,11 +33,13 @@ const translations = {
         selectNavigation: "Chapdan navigatsiya bo'limini tanlang."
     },
     ru: {
+        courses_add: "Добавить курс",
         lastActive: "Последняя активность: 2 дня назад",
         profileSettings: "Настройки профиля",
         editProfile: "Редактировать профиль",
         changePassword: "Изменить пароль",
         logout: "Выйти из системы",
+        profile: "Личный счет",
         navigation: "Навигация",
         home: "Главная",
         statistics: "Статистика",

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Sidebar Navigation - Index</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="css/aside.css">
+    <style>
+        /* Additional styles for the index page */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        body.dark .feature-card {
+            background: #1f2937;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: #4f46e5;
+        }
+        
+        body.dark .feature-card h3 {
+            color: #818cf8;
+        }
+        
+        .page-header {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- The sidebar component will be loaded here via JS -->
+    <div id="sidebar-placeholder"></div>
+    
+    <!-- Main Content Area -->
+    <main id="mainContent">
+        <div class="content-container">
+            <div class="page-header">
+                <h1>Ta'lim platformasi boshqaruv paneli</h1>
+                <p>Marhamat, chapdan kerakli bo'limni tanlang yoki quyidagi funktsiyalarni ko'rib chiqing.</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>O'quvchilar boshqaruvi</h3>
+                    <p>O'quvchilarni ro'yxatga olish, ularning ma'lumotlarini tahrirlash va o'qish jarayonini kuzatish.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>O'qituvchilar faoliyati</h3>
+                    <p>O'qituvchilar faoliyati, dars jadvali va natijalarini nazorat qilish.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Kurslar katalogi</h3>
+                    <p>Barcha mavjud kurslar, ularning tavsifi va o'quv dasturlari bilan tanishing.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Statistik ma'lumotlar</h3>
+                    <p>O'quv platformasi faoliyati bo'yicha batafsil tahliliy ma'lumotlar.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Yo'nalishlar</h3>
+                    <p>Ta'lim yo'nalishlari va ular bo'yicha tavsiyalar.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Video materiallar</h3>
+                    <p>YouTube kanalimizda joylashtirilgan video darslar to'plami.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/aside.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            
+            // Create menu button
+            const menuBtn = document.createElement('button');
+            menuBtn.id = 'menuBtn';
+            menuBtn.className = 'menu-btn';
+            menuBtn.setAttribute('aria-label', 'Menu');
+            menuBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            `;
+            
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'sidebar-overlay';
+            
+            // Append to placeholder
+            sidebarPlaceholder.appendChild(menuBtn);
+            sidebarPlaceholder.appendChild(overlay);
+            
+            // Fetch sidebar content (in a real app)
+            // For this demo, we'll load it from aside.html
+            fetch('aside.html')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const asideContainer = doc.querySelector('.aside-container');
+                    
+                    if (asideContainer) {
+                        sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                        
+                        // Re-initialize the aside system
+                        initApp();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading sidebar:', err);
+                    
+
+                    
+                    sidebarPlaceholder.appendChild(asideContainer);
+                    
+                    // Initialize with basic functions
+                    menuBtn.addEventListener('click', function() {
+                        document.body.classList.toggle('sidebar-open');
+                    });
+                    
+                    document.querySelector('#closeBtn').addEventListener('click', function() {
+                        document.body.classList.remove('sidebar-open');
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
