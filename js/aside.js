@@ -12,6 +12,8 @@ const mainContent = document.getElementById('mainContent');
 // Translations
 const translations = {
     uz: {
+        sertificat_berish:"Sertificat berish",
+        sertificat:"Sertificatlarim",
         courses_add: "Kurs qo'shish",
         lesson_upload:"Dars yuklash",
         test_answers:"Test javoblari",
@@ -41,6 +43,8 @@ const translations = {
         selectNavigation: "Chapdan navigatsiya bo'limini tanlang."
     },
     ru: {
+        sertificat_berish:"Выдача сертификата",
+        sertificat:"Мои сертификаты",
         courses_add: "Добавить курс",
         lesson_upload:"Скачать урок",
         test_upload:"Тестовая загрузка",

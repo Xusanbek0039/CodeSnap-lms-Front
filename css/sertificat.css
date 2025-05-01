@@ -1,0 +1,478 @@
+/* ===== ASOSIY STILLAR ===== */
+:root {
+    --asosiy-rang: #3A86FF;
+    --asosiy-rang-och: #62A1FF;
+    --asosiy-rang-qorongi: #2563EB;
+    --qoshimcha-rang: #FFBE0B;
+    --qoshimcha-rang-och: #FFD166;
+    --muvaffaqiyat-rang: #38B000;
+    --ogohlantirish-rang: #FB5607;
+    --xato-rang: #FF006E;
+    --matn-rang: #F3F4F6;
+    --matn-rang-och: #D1D5DB;
+    --fon-rang: #111827;
+    --fon-rang-qorongi: #1F2937;
+    --oq-rang: #FFFFFF;
+    --soya-rang: rgba(0, 0, 0, 0.3);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: var(--fon-rang);
+    color: var(--matn-rang);
+    line-height: 1.6;
+  }
+  
+  /* ===== KONTEYNER ===== */
+  .asosiy-konteyner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ===== SARLAVHA ===== */
+  .sarlavha {
+    background-color: var(--fon-rang-qorongi);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px var(--soya-rang);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .sarlavha h1 {
+    color: var(--asosiy-rang);
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  /* ===== NAVIGATSIYA ===== */
+  .navigatsiya ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+  
+  .navigatsiya a {
+    text-decoration: none;
+    color: var(--matn-rang);
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .navigatsiya a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .navigatsiya a:hover::before {
+    left: 100%;
+  }
+  
+  .navigatsiya a:hover {
+    background-color: var(--asosiy-rang-qorongi);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+  }
+  
+  .navigatsiya a.faol {
+    background-color: var(--asosiy-rang);
+    color: var(--oq-rang);
+  }
+  
+  /* ===== ASOSIY KONTENT ===== */
+  .asosiy-kontent {
+    flex: 1;
+    background-color: var(--fon-rang-qorongi);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px var(--soya-rang);
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* ===== TUGMALAR ===== */
+  .tugma {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--asosiy-rang), var(--asosiy-rang-qorongi));
+    color: var(--oq-rang);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .tugma::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .tugma:hover::before {
+    left: 100%;
+  }
+  
+  .tugma:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(135deg, var(--asosiy-rang-qorongi), var(--asosiy-rang));
+  }
+  
+  .tugma:active {
+    transform: translateY(1px);
+  }
+  
+  .tugma-icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+  }
+  
+  .yuklab-olish-tugma {
+    background: linear-gradient(135deg, var(--qoshimcha-rang), var(--qoshimcha-rang-och));
+    margin-top: 15px;
+  }
+  
+  .yuklab-olish-tugma:hover {
+    background: linear-gradient(135deg, var(--qoshimcha-rang-och), var(--qoshimcha-rang));
+    box-shadow: 0 10px 20px rgba(255, 190, 11, 0.3);
+  }
+  
+  .kichik {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .joriy-etish {
+    background: linear-gradient(135deg, var(--muvaffaqiyat-rang), #2E9000);
+  }
+  
+  .joriy-etish:hover {
+    background: linear-gradient(135deg, #2E9000, var(--muvaffaqiyat-rang));
+    box-shadow: 0 10px 20px rgba(56, 176, 0, 0.3);
+  }
+  
+  .boshqatdan-berish {
+    background: linear-gradient(135deg, var(--qoshimcha-rang), var(--qoshimcha-rang-och));
+  }
+  
+  .boshqatdan-berish:hover {
+    background: linear-gradient(135deg, var(--qoshimcha-rang-och), var(--qoshimcha-rang));
+  }
+  
+  .bekor-tugma {
+    background: linear-gradient(135deg, #4B5563, #374151);
+    color: var(--matn-rang);
+  }
+  
+  .bekor-tugma:hover {
+    background: linear-gradient(135deg, #374151, #4B5563);
+  }
+  
+  .yuborish-tugma {
+    background: linear-gradient(135deg, var(--muvaffaqiyat-rang), #2E9000);
+  }
+  
+  .yuborish-tugma:hover {
+    background: linear-gradient(135deg, #2E9000, var(--muvaffaqiyat-rang));
+  }
+  
+  /* ===== JADVAL ===== */
+  .jadval-konteyner {
+    overflow-x: auto;
+    background-color: var(--fon-rang);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .oquvchilar-jadvali {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .oquvchilar-jadvali th {
+    background: linear-gradient(135deg, var(--asosiy-rang), var(--asosiy-rang-qorongi));
+    color: var(--oq-rang);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .oquvchilar-jadvali td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .oquvchilar-jadvali tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .oquvchilar-jadvali tr.sertificat-bor {
+    animation: highlightRow 0.5s ease-in-out;
+  }
+  
+  /* ===== HOLAT BELGILARI ===== */
+  .holat {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .yuklab-olish {
+    background-color: rgba(56, 176, 0, 0.2);
+    color: var(--muvaffaqiyat-rang);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(56, 176, 0, 0.3);
+  }
+  
+  .yuklab-olish:hover {
+    background-color: var(--muvaffaqiyat-rang);
+    color: var(--oq-rang);
+    transform: translateY(-2px);
+  }
+  
+  .sertificat-yoq {
+    background-color: rgba(251, 86, 7, 0.2);
+    color: var(--ogohlantirish-rang);
+    border: 1px solid rgba(251, 86, 7, 0.3);
+  }
+  
+  /* ===== MODAL ===== */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+  
+  .modal.korinadi {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .modal-content {
+    background-color: var(--fon-rang-qorongi);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideIn 0.3s ease-in-out forwards;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* ===== FORM ===== */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--matn-rang);
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--fon-rang);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--matn-rang);
+    transition: all 0.3s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--asosiy-rang);
+    box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+  }
+  
+  /* ===== FAYL TANLASH ===== */
+  .fayl-tanlash {
+    position: relative;
+    margin-bottom: 5px;
+  }
+  
+  .fayl-input {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  .fayl-yorliq {
+    display: block;
+    padding: 12px 15px;
+    background-color: var(--fon-rang);
+    border: 2px dashed var(--asosiy-rang);
+    border-radius: 8px;
+    color: var(--matn-rang);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .fayl-yorliq:hover {
+    background-color: rgba(58, 134, 255, 0.1);
+    border-color: var(--asosiy-rang-qorongi);
+    transform: translateY(-2px);
+  }
+  
+  /* ===== ANIMATSIYALAR ===== */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(251, 86, 7, 0.4);
+    }
+    70% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 10px rgba(251, 86, 7, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(251, 86, 7, 0);
+    }
+  }
+  
+  @keyframes highlightRow {
+    0% {
+      background-color: rgba(56, 176, 0, 0.2);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+  
+  /* ===== RESPONSIVE DIZAYN ===== */
+  @media (max-width: 768px) {
+    .sarlavha {
+      padding: 15px;
+    }
+    
+    .sarlavha h1 {
+      font-size: 1.5rem;
+    }
+    
+    .navigatsiya ul {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+    
+    .navigatsiya a {
+      display: block;
+      text-align: center;
+    }
+    
+    .asosiy-kontent {
+      padding: 15px;
+    }
+    
+    .form-buttons {
+      flex-direction: column;
+    }
+    
+    .tugma {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .asosiy-konteyner {
+      padding: 10px;
+    }
+    
+    .sertificat-mavjud, .sertificat-yoq {
+      padding: 15px;
+    }
+    
+    .oquvchilar-jadvali th,
+    .oquvchilar-jadvali td {
+      padding: 8px;
+    }
+  }
+  

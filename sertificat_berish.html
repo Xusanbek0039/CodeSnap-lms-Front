@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sertificat Berish</title>
+  <link rel="stylesheet" href="css/aside.css">
+
+  <link rel="stylesheet" href="css/sertificat.css">
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+  <div class="asosiy-konteyner">
+
+
+    <main class="asosiy-kontent">
+      <div class="panel-sarlavha">
+        <h2>O'quvchilar Ro'yxati</h2>
+      </div>
+      
+      <div class="jadval-konteyner">
+        <table class="oquvchilar-jadvali">
+          <thead>
+            <tr>
+              <th>T/r</th>
+              <th>Ism familiya</th>
+              <th>Yuklama</th>
+              <th>Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="oquvchilarRoyxati">
+            <!-- O'quvchilar ro'yxati JavaScript bilan to'ldiriladi -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Sertificat berish uchun modal -->
+  <div id="sertificatModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 class="modal-sarlavha">Sertificat Joriy Etish</h2>
+      
+      <form id="sertificatForm">
+        <div class="form-group">
+          <label for="oquvchiIsmi">O'quvchi ismi:</label>
+          <input type="text" id="oquvchiIsmi" class="form-input" readonly>
+          <input type="hidden" id="oquvchiId">
+        </div>
+        
+        <div class="form-group">
+          <label for="sertificatFile">Sertificat biriktirish:</label>
+          <div class="fayl-tanlash">
+            <input type="file" id="sertificatFile" class="fayl-input" accept=".pdf,.jpg,.jpeg,.png">
+            <label for="sertificatFile" class="fayl-yorliq">Faylni tanlang</label>
+          </div>
+          <small class="fayl-info">PDF, JPG, PNG formatidagi fayllarni yuklang</small>
+        </div>
+        
+        <div class="form-buttons">
+          <button type="button" class="tugma bekor-tugma">Bekor qilish</button>
+          <button type="submit" class="tugma yuborish-tugma">Joriy etish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // O'quvchilar ro'yxati (haqiqiy dasturda bu ma'lumotlar serverdan olinadi)
+    const oquvchilar = [
+      { id: 1, ism: "Alisher Navoiy", sertificat: true, faylNomi: "alisher_navoiy_sertificat.pdf" },
+      { id: 2, ism: "Bobur Mirzo", sertificat: false },
+      { id: 3, ism: "Gulnora Karimova", sertificat: true, faylNomi: "gulnora_karimova_sertificat.pdf" },
+      { id: 4, ism: "Dilshod Ahmedov", sertificat: false },
+      { id: 5, ism: "Ziyoda Mahmudova", sertificat: false }
+    ];
+
+    // O'quvchilar ro'yxatini ko'rsatish
+    function oquvchilarniKorsatish() {
+      const tbody = document.getElementById('oquvchilarRoyxati');
+      tbody.innerHTML = '';
+
+      oquvchilar.forEach((oquvchi, index) => {
+        const tr = document.createElement('tr');
+        
+        // Sertificat mavjudligiga qarab animatsiyani qo'shish
+        if (oquvchi.sertificat) {
+          tr.classList.add('sertificat-bor');
+        }
+        
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${oquvchi.ism}</td>
+          <td>
+            ${oquvchi.sertificat 
+              ? `<span class="holat yuklab-olish" data-id="${oquvchi.id}">Yuklab olish</span>` 
+              : '<span class="holat sertificat-yoq">Sertificat yo\'q</span>'}
+          </td>
+          <td>
+            ${oquvchi.sertificat
+              ? `<button class="tugma kichik boshqatdan-berish" data-id="${oquvchi.id}">Boshqatdan berish</button>`
+              : `<button class="tugma kichik joriy-etish" data-id="${oquvchi.id}">Joriy etish</button>`}
+          </td>
+        `;
+        
+        tbody.appendChild(tr);
+      });
+
+      // Joriy etish tugmalariga hodisa qo'shish
+      document.querySelectorAll('.joriy-etish, .boshqatdan-berish').forEach(button => {
+        button.addEventListener('click', function() {
+          const oquvchiId = this.getAttribute('data-id');
+          const oquvchi = oquvchilar.find(o => o.id == oquvchiId);
+          
+          document.getElementById('oquvchiIsmi').value = oquvchi.ism;
+          document.getElementById('oquvchiId').value = oquvchiId;
+          
+          document.getElementById('sertificatModal').classList.add('korinadi');
+        });
+      });
+
+      // Yuklab olish tugmasiga hodisa qo'shish
+      document.querySelectorAll('.yuklab-olish').forEach(span => {
+        span.addEventListener('click', function() {
+          const oquvchiId = this.getAttribute('data-id');
+          const oquvchi = oquvchilar.find(o => o.id == oquvchiId);
+          
+          // Haqiqiy dasturda, bu yerda yuklab olish mantiqini qo'shish kerak
+          alert(`${oquvchi.ism} uchun sertifikat yuklab olinmoqda...`);
+        });
+      });
+    }
+
+    // Modal oynani yopish
+    function modalniYopish() {
+      document.getElementById('sertificatModal').classList.remove('korinadi');
+      document.getElementById('sertificatForm').reset();
+    }
+
+    // Sahifa yuklanishi bilan o'quvchilar ro'yxatini ko'rsatish
+    document.addEventListener('DOMContentLoaded', oquvchilarniKorsatish);
+
+    // Modal oynani yopish uchun hodisalar
+    document.querySelector('.close-button').addEventListener('click', modalniYopish);
+    document.querySelector('.bekor-tugma').addEventListener('click', modalniYopish);
+    
+    // Modal tashqarisiga bosilganda yopilishi
+    window.addEventListener('click', function(event) {
+      if (event.target == document.getElementById('sertificatModal')) {
+        modalniYopish();
+      }
+    });
+
+    // Sertificat formani yuborish
+    document.getElementById('sertificatForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const oquvchiId = document.getElementById('oquvchiId').value;
+      const sertificatFile = document.getElementById('sertificatFile').value;
+      
+      if (!sertificatFile) {
+        alert('Iltimos, sertificat faylini tanlang!');
+        return;
+      }
+      
+      // Haqiqiy dasturda, bu yerda faylni yuklash va sertifikatni saqlash mantiqini qo'shish kerak
+      // Ushbu namunada, biz faqat o'quvchi ma'lumotlarini yangilaymiz
+      const oquvchiIndex = oquvchilar.findIndex(o => o.id == oquvchiId);
+      
+      if (oquvchiIndex !== -1) {
+        // Fayl nomini olish (faqat fayl nomini, yo'lni emas)
+        const faylNomi = sertificatFile.split('\\').pop();
+        
+        oquvchilar[oquvchiIndex].sertificat = true;
+        oquvchilar[oquvchiIndex].faylNomi = faylNomi;
+        
+        // O'quvchilar ro'yxatini yangilash
+        oquvchilarniKorsatish();
+        
+        // Muvaffaqiyatli xabar
+        alert(`${oquvchilar[oquvchiIndex].ism} uchun sertificat muvaffaqiyatli joriy etildi!`);
+        
+        // Modalni yopish
+        modalniYopish();
+      }
+    });
+
+    // Fayl tanlanganda, fayl nomini ko'rsatish
+    document.getElementById('sertificatFile').addEventListener('change', function() {
+      const faylNomi = this.value.split('\\').pop();
+      const faylYorliq = this.nextElementSibling;
+      
+      if (faylNomi) {
+        faylYorliq.textContent = faylNomi;
+      } else {
+        faylYorliq.textContent = 'Faylni tanlang';
+      }
+    });
+  </script>
+<script src="js/aside.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+        
+        // Create menu button
+        const menuBtn = document.createElement('button');
+        menuBtn.id = 'menuBtn';
+        menuBtn.className = 'menu-btn';
+        menuBtn.setAttribute('aria-label', 'Menu');
+        menuBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" x2="20" y1="12" y2="12"></line>
+                <line x1="4" x2="20" y1="6" y2="6"></line>
+                <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+        `;
+        
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        
+        // Append to placeholder
+        sidebarPlaceholder.appendChild(menuBtn);
+        sidebarPlaceholder.appendChild(overlay);
+        
+        // Fetch sidebar content (in a real app)
+        // For this demo, we'll load it from aside.html
+        fetch('aside.html')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const asideContainer = doc.querySelector('.aside-container');
+                
+                if (asideContainer) {
+                    sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                    
+                    // Re-initialize the aside system
+                    initApp();
+                }
+            })
+            .catch(err => {
+                console.error('Error loading sidebar:', err);
+                
+
+                
+                sidebarPlaceholder.appendChild(asideContainer);
+                
+                // Initialize with basic functions
+                menuBtn.addEventListener('click', function() {
+                    document.body.classList.toggle('sidebar-open');
+                });
+                
+                document.querySelector('#closeBtn').addEventListener('click', function() {
+                    document.body.classList.remove('sidebar-open');
+                });
+            });
+    });
+</script>
+</body>
+</html>
