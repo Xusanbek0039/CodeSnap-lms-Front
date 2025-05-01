@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dars Yuklash</title>
+    <link rel="stylesheet" href="css/darslar.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        label{
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+    <div class="konteyner">
+        <h1 class="sarlavha">Yangi dars yuklash</h1>
+        
+        <form class="forma yuklandi">
+            <div class="forma-guruh">
+                <label for="kurs" class="yorliq">Kursni tanlang:</label>
+                <select id="kurs" class="tanlash" required>
+                    <option value="" disabled selected>Kursni tanlang</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="html-css">HTML va CSS</option>
+                    <option value="react">React</option>
+                    <option value="nodejs">Node.js</option>
+                    <option value="python">Python</option>
+                </select>
+            </div>
+            
+            <div class="forma-guruh">
+                <label for="dars-nomi" class="yorliq">Dars nomi:</label>
+                <input type="text" id="dars-nomi" class="kiritish" placeholder="Masalan: JavaScript asoslari" required>
+            </div>
+            
+            <div class="forma-guruh">
+                <label for="video-manba" class="yorliq">Videoni qayerdan olasiz?</label>
+                <select id="video-manba" class="tanlash" onchange="videoManbasiTanlash()" required>
+                    <option value="" disabled selected>Manba tanlang</option>
+                    <option value="youtube">YouTube</option>
+                    <option value="xotira">Kompyuter xotirasidan</option>
+                </select>
+            </div>
+            
+            <div id="youtube-manba" class="manba-konteyner forma-guruh">
+                <label for="youtube-havola" class="yorliq">YouTube havolasini kiriting:</label>
+                <input type="url" id="youtube-havola" class="kiritish" placeholder="https://www.youtube.com/watch?v=...">
+                <small style="display: block; margin-top: 0.5rem; color: #9CA3AF;">YouTube video havolasi to'g'ri formatda bo'lishi kerak</small>
+            </div>
+            
+            <div id="xotira-manba" class="manba-konteyner forma-guruh">
+                <label for="video-fayl" class="yorliq">Video faylni tanlang:</label>
+                <label for="video-fayl" class="fayl-tanlash">
+                    <span>Videoni yuklash uchun bosing yoki sudrab tashlang</span>
+                    <input type="file" id="video-fayl" accept="video/*">
+                </label>
+            </div>
+            
+            <div class="forma-guruh">
+                <label for="qollanma" class="yorliq">Dars qo'llanmasi:</label>
+                <textarea id="qollanma" class="kiritish" rows="8" placeholder="Dars haqida ma'lumot, o'tiladigan mavzular, amaliy mashqlar va boshqa muhim ma'lumotlarni kiriting..." required></textarea>
+            </div>
+            
+            <div class="forma-guruh">
+                <label for="tartib-raqami" class="yorliq">Dars tartib raqami:</label>
+                <input type="number" id="tartib-raqami" class="kiritish" min="1" placeholder="Masalan: 3" required>
+            </div>
+            
+            <button type="submit" class="tugma yuklash-tugma">Darsni yuklash</button>
+        </form>
+        
+        <div class="navigatsiya">
+            <button class="tugma" onclick="window.location.href='dars.html'">
+                <span class="tugma-icon">←</span> Darslarni ko'rish
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function videoManbasiTanlash() {
+            const manba = document.getElementById('video-manba').value;
+            const youtubeManba = document.getElementById('youtube-manba');
+            const xotiraManba = document.getElementById('xotira-manba');
+            
+            // Barcha manbalarni yashirish
+            youtubeManba.classList.remove('active');
+            xotiraManba.classList.remove('active');
+            
+            // Tanlangan manbani ko'rsatish
+            if (manba === 'youtube') {
+                youtubeManba.classList.add('active');
+            } else if (manba === 'xotira') {
+                xotiraManba.classList.add('active');
+            }
+        }
+        
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Form validation
+            const kurs = document.getElementById('kurs').value;
+            const darsNomi = document.getElementById('dars-nomi').value;
+            const videoManba = document.getElementById('video-manba').value;
+            const qollanma = document.getElementById('qollanma').value;
+            
+            if (!kurs || !darsNomi || !videoManba || !qollanma) {
+                alert('Iltimos, barcha majburiy maydonlarni to\'ldiring!');
+                return;
+            }
+            
+            // Here would be the code to actually submit/save the data
+            alert('Dars muvaffaqiyatli yuklandi!');
+            // Reset form
+            this.reset();
+            document.getElementById('youtube-manba').classList.remove('active');
+            document.getElementById('xotira-manba').classList.remove('active');
+        });
+        
+        // Animation for page elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const forma = document.querySelector('.forma');
+            setTimeout(() => {
+                forma.classList.add('yuklandi');
+            }, 100);
+        });
+    </script>
+     <script src="js/aside.js"></script>
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+ 
+             const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+             
+             // Create menu button
+             const menuBtn = document.createElement('button');
+             menuBtn.id = 'menuBtn';
+             menuBtn.className = 'menu-btn';
+             menuBtn.setAttribute('aria-label', 'Menu');
+             menuBtn.innerHTML = `
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <line x1="4" x2="20" y1="12" y2="12"></line>
+                     <line x1="4" x2="20" y1="6" y2="6"></line>
+                     <line x1="4" x2="20" y1="18" y2="18"></line>
+                 </svg>
+             `;
+             
+             // Create overlay
+             const overlay = document.createElement('div');
+             overlay.className = 'sidebar-overlay';
+             
+             // Append to placeholder
+             sidebarPlaceholder.appendChild(menuBtn);
+             sidebarPlaceholder.appendChild(overlay);
+             
+             // Fetch sidebar content (in a real app)
+             // For this demo, we'll load it from aside.html
+             fetch('aside.html')
+                 .then(response => response.text())
+                 .then(html => {
+                     const parser = new DOMParser();
+                     const doc = parser.parseFromString(html, 'text/html');
+                     const asideContainer = doc.querySelector('.aside-container');
+                     
+                     if (asideContainer) {
+                         sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                         
+                         // Re-initialize the aside system
+                         initApp();
+                     }
+                 })
+                 .catch(err => {
+                     console.error('Error loading sidebar:', err);
+                     
+ 
+                     
+                     sidebarPlaceholder.appendChild(asideContainer);
+                     
+                     // Initialize with basic functions
+                     menuBtn.addEventListener('click', function() {
+                         document.body.classList.toggle('sidebar-open');
+                     });
+                     
+                     document.querySelector('#closeBtn').addEventListener('click', function() {
+                         document.body.classList.remove('sidebar-open');
+                     });
+                 });
+         });
+     </script>
+</body>
+</html>

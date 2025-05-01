@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test yuklash | EduTest</title>
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/aside.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        h2,h3{
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+    <div class="asosiy-konteyner">
+        <main class="asosiy-kontent">
+            <div class="yuklash-konteyner animate-fade-in">
+                <div class="yuklash-tabs">
+                    <button class="tab-tugma active" data-tab="oddiy">Oddiy test</button>
+                    <button class="tab-tugma" data-tab="oraliq">Oraliq test</button>
+                </div>
+
+                <!-- Oddiy test yuklash -->
+                <div class="tab-paneli animate-fade-in active" id="oddiy-panel">
+                    <div class="forma-sarlavha">
+                        <h2>Oddiy test yaratish</h2>
+                        <p>Quyidagi forma orqali oddiy test yaratishingiz mumkin.</p>
+                    </div>
+
+                    <form class="test-forma" id="oddiy-forma">
+                        <div class="forma-guruh">
+                            <label for="test-nomi">Test nomi</label>
+                            <input type="text" id="test-nomi" class="kiritish-maydoni" placeholder="Misol: Matematika asoslari" required>
+                        </div>
+
+                        <div class="forma-guruh">
+                            <label for="test-tavsifi">Test tavsifi</label>
+                            <textarea id="test-tavsifi" class="kiritish-maydoni" rows="3" placeholder="Test haqida qisqacha ma'lumot..."></textarea>
+                        </div>
+
+                        <div class="forma-guruh">
+                            <label for="test-vaqti">Test vaqti (daqiqada)</label>
+                            <input type="number" id="test-vaqti" class="kiritish-maydoni" min="1" max="180" value="45" required>
+                        </div>
+
+                        <div class="savollar-konteyner" id="oddiy-savollar">
+                            <div class="savol-box" data-savol-id="1">
+                                <div class="savol-header">
+                                    <h3>Savol #1</h3>
+                                    <button type="button" class="tugma tugma-xavf savol-ochir-tugma" title="Savolni o'chirish">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="forma-guruh">
+                                    <label for="savol-matn-1">Savol matni</label>
+                                    <input type="text" id="savol-matn-1" class="kiritish-maydoni" placeholder="Savolni kiriting..." required>
+                                </div>
+
+                                <div class="javoblar-box">
+                                    <div class="javob-header">
+                                        <h4>Javob variantlari</h4>
+                                    </div>
+
+                                    <div class="javob-variant-box">
+                                        <div class="javob-qator">
+                                            <input type="radio" name="togri-javob-1" id="togri-javob-1-a" value="0" required>
+                                            <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti A" required>
+                                        </div>
+                                        <div class="javob-qator">
+                                            <input type="radio" name="togri-javob-1" id="togri-javob-1-b" value="1">
+                                            <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti B" required>
+                                        </div>
+                                        <div class="javob-qator">
+                                            <input type="radio" name="togri-javob-1" id="togri-javob-1-c" value="2">
+                                            <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti C" required>
+                                        </div>
+                                        <div class="javob-qator">
+                                            <input type="radio" name="togri-javob-1" id="togri-javob-1-d" value="3">
+                                            <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti D" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="tugma tugma-ikkilamchi" id="savol-qoshish-tugma">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Savol qo'shish
+                            </button>
+                            <button type="submit" class="tugma tugma-asosiy">Testni saqlash</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Oraliq test yuklash -->
+                <div class="tab-paneli animate-fade-in" id="oraliq-panel">
+                    <div class="forma-sarlavha">
+                        <h2>Oraliq test yaratish</h2>
+                        <p>Quyidagi forma orqali oraliq test yaratishingiz mumkin.</p>
+                    </div>
+
+                    <form class="test-forma" id="oraliq-forma">
+                        <div class="forma-guruh">
+                            <label for="oraliq-test-nomi">Test nomi</label>
+                            <input type="text" id="oraliq-test-nomi" class="kiritish-maydoni" placeholder="Misol: Matematika oraliq test" required>
+                        </div>
+
+                        <div class="forma-guruh">
+                            <label for="oraliq-test-tavsifi">Test tavsifi</label>
+                            <textarea id="oraliq-test-tavsifi" class="kiritish-maydoni" rows="3" placeholder="Test haqida qisqacha ma'lumot..."></textarea>
+                        </div>
+
+                        <div class="forma-guruh oraliq-qator">
+                            <div class="forma-yarim">
+                                <label for="oraliq-test-vaqti">Test vaqti (daqiqada)</label>
+                                <input type="number" id="oraliq-test-vaqti" class="kiritish-maydoni" min="1" max="180" value="60" required>
+                            </div>
+                            <div class="forma-yarim">
+                                <label for="test-utish-bali">O'tish bali (%)</label>
+                                <input type="number" id="test-utish-bali" class="kiritish-maydoni" min="1" max="100" value="60" required>
+                            </div>
+                        </div>
+
+                        <div class="forma-guruh">
+                            <label for="oraliq-mavzular">Mavzuni tanlang</label>
+                            <select id="oraliq-mavzular" class="kiritish-maydoni" multiple>
+                                <option value="mavzu1">Matematika: Algebra</option>
+                                <option value="mavzu2">Matematika: Geometriya</option>
+                                <option value="mavzu3">Fizika: Mexanika</option>
+                                <option value="mavzu4">Fizika: Elektr</option>
+                                <option value="mavzu5">Informatika: Dasturlash</option>
+                                <option value="mavzu6">Informatika: Algoritmlar</option>
+                            </select>
+                            <p class="forma-yordam">Bir nechta mavzuni tanlash uchun Ctrl (Windows) yoki Command (Mac) tugmasini ushlab turing.</p>
+                        </div>
+
+                        <div class="forma-guruh oraliq-qator">
+                            <div class="forma-yarim">
+                                <label for="savollar-soni">Savollar soni</label>
+                                <input type="number" id="savollar-soni" class="kiritish-maydoni" min="5" max="100" value="20" required>
+                            </div>
+                            <div class="forma-yarim">
+                                <label for="qiyinlik-darajasi">Qiyinlik darajasi</label>
+                                <select id="qiyinlik-darajasi" class="kiritish-maydoni">
+                                    <option value="oson">Oson</option>
+                                    <option value="orta" selected>O'rta</option>
+                                    <option value="qiyin">Qiyin</option>
+                                    <option value="aralash">Aralash</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="forma-guruh">
+                            <label>Test sozlamalari</label>
+                            <div class="check-qator">
+                                <input type="checkbox" id="tasodifiy-tartib" checked>
+                                <label for="tasodifiy-tartib">Savollarni tasodifiy tartibda ko'rsatish</label>
+                            </div>
+                            <div class="check-qator">
+                                <input type="checkbox" id="natijani-kursat">
+                                <label for="natijani-kursat">Testdan keyin to'g'ri javoblarni ko'rsatish</label>
+                            </div>
+                            <div class="check-qator">
+                                <input type="checkbox" id="oldingi-savolga-qaytish" checked>
+                                <label for="oldingi-savolga-qaytish">Oldingi savollarga qaytishga ruxsat berish</label>
+                            </div>
+                        </div>
+
+                        <div class="forma-guruh">
+                            <label for="test-fayl">Savollar fayli (CSV, Excel)</label>
+                            <input type="file" id="test-fayl" class="fayl-tanlash" accept=".csv, .xlsx, .xls">
+                            <p class="forma-yordam">Namuna faylni <a href="#" class="havola">bu yerdan</a> yuklab olishingiz mumkin.</p>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="reset" class="tugma tugma-ikkilamchi">Tozalash</button>
+                            <button type="submit" class="tugma tugma-asosiy">Testni yaratish</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tab panellarini boshqarish
+            const tabTugmalar = document.querySelectorAll('.tab-tugma');
+            const tabPanellar = document.querySelectorAll('.tab-paneli');
+            
+            tabTugmalar.forEach(tugma => {
+                tugma.addEventListener('click', () => {
+                    // Tugmalarni yangilash
+                    tabTugmalar.forEach(t => t.classList.remove('active'));
+                    tugma.classList.add('active');
+                    
+                    // Panellarni yangilash
+                    const targetTab = tugma.dataset.tab;
+                    tabPanellar.forEach(panel => {
+                        panel.classList.remove('active');
+                        if (panel.id === `${targetTab}-panel`) {
+                            panel.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Oddiy test formasiga savol qo'shish
+            const savolQoshishTugma = document.getElementById('savol-qoshish-tugma');
+            const oddiyForma = document.getElementById('oddiy-forma');
+            const oddiyFormaSavollar = document.getElementById('oddiy-savollar');
+            let savolSoni = 1;
+            
+            savolQoshishTugma.addEventListener('click', () => {
+                savolSoni++;
+                
+                const yangiSavol = document.createElement('div');
+                yangiSavol.className = 'savol-box';
+                yangiSavol.dataset.savolId = savolSoni;
+                
+                yangiSavol.innerHTML = `
+                    <div class="savol-header">
+                        <h3>Savol #${savolSoni}</h3>
+                        <button type="button" class="tugma tugma-xavf savol-ochir-tugma" title="Savolni o'chirish">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="forma-guruh">
+                        <label for="savol-matn-${savolSoni}">Savol matni</label>
+                        <input type="text" id="savol-matn-${savolSoni}" class="kiritish-maydoni" placeholder="Savolni kiriting..." required>
+                    </div>
+
+                    <div class="javoblar-box">
+                        <div class="javob-header">
+                            <h4>Javob variantlari</h4>
+                        </div>
+
+                        <div class="javob-variant-box">
+                            <div class="javob-qator">
+                                <input type="radio" name="togri-javob-${savolSoni}" id="togri-javob-${savolSoni}-a" value="0" required>
+                                <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti A" required>
+                            </div>
+                            <div class="javob-qator">
+                                <input type="radio" name="togri-javob-${savolSoni}" id="togri-javob-${savolSoni}-b" value="1">
+                                <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti B" required>
+                            </div>
+                            <div class="javob-qator">
+                                <input type="radio" name="togri-javob-${savolSoni}" id="togri-javob-${savolSoni}-c" value="2">
+                                <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti C" required>
+                            </div>
+                            <div class="javob-qator">
+                                <input type="radio" name="togri-javob-${savolSoni}" id="togri-javob-${savolSoni}-d" value="3">
+                                <input type="text" class="kiritish-maydoni javob-maydoni" placeholder="Javob varianti D" required>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                oddiyFormaSavollar.appendChild(yangiSavol);
+                
+                // Savol o'chirish tugmasiga hodisa qo'shish
+                const savolOchirishTugma = yangiSavol.querySelector('.savol-ochir-tugma');
+                savolOchirishTugma.addEventListener('click', () => {
+                    yangiSavol.remove();
+                });
+            });
+            
+            // Mavjud savollarni o'chirish uchun tugma
+            document.body.addEventListener('click', e => {
+                if (e.target.closest('.savol-ochir-tugma')) {
+                    const tugma = e.target.closest('.savol-ochir-tugma');
+                    const savolBox = tugma.closest('.savol-box');
+                    
+                    // Agar bu birinchi savol emas bo'lsa, o'chiramiz
+                    if (savolBox.dataset.savolId !== '1') {
+                        savolBox.remove();
+                    } else {
+                        alert("Birinchi savolni o'chirib bo'lmaydi. Kamida bitta savol bo'lishi kerak.");
+                    }
+                }
+            });
+            
+            // Forma yuborilganda
+            oddiyForma.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Test ma'lumotlarini yig'ish
+                const testNomi = document.getElementById('test-nomi').value;
+                const testTavsifi = document.getElementById('test-tavsifi').value;
+                const testVaqti = document.getElementById('test-vaqti').value;
+                
+                // Savollarni yig'ish
+                const savolBoxlar = document.querySelectorAll('.savol-box');
+                const savollar = [];
+                
+                savolBoxlar.forEach(box => {
+                    const savolId = box.dataset.savolId;
+                    const savolMatni = box.querySelector(`#savol-matn-${savolId}`).value;
+                    const togriJavob = box.querySelector(`input[name="togri-javob-${savolId}"]:checked`)?.value;
+                    
+                    if (!togriJavob) {
+                        alert(`Savol #${savolId} uchun to'g'ri javobni belgilang!`);
+                        return;
+                    }
+                    
+                    const javobMaydonlari = box.querySelectorAll('.javob-maydoni');
+                    const javoblar = [];
+                    
+                    javobMaydonlari.forEach(maydon => {
+                        javoblar.push(maydon.value);
+                    });
+                    
+                    savollar.push({
+                        id: savolId,
+                        savol: savolMatni,
+                        javoblar: javoblar,
+                        togriJavob: parseInt(togriJavob)
+                    });
+                });
+                
+                // Test ma'lumotlarini obyekt sifatida yig'ish
+                const testMalumotlari = {
+                    nomi: testNomi,
+                    tavsifi: testTavsifi,
+                    vaqti: parseInt(testVaqti),
+                    savollar: savollar
+                };
+                
+                // Ma'lumotlarni localStorage ga saqlash
+                const testlar = JSON.parse(localStorage.getItem('testlar') || '[]');
+                testlar.push(testMalumotlari);
+                localStorage.setItem('testlar', JSON.stringify(testlar));
+                
+                alert('Test muvaffaqiyatli saqlandi!');
+                oddiyForma.reset();
+            });
+            
+            // Oraliq test formasini yuborish
+            const oraliqForma = document.getElementById('oraliq-forma');
+            
+            oraliqForma.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Test ma'lumotlarini yig'ish
+                const testNomi = document.getElementById('oraliq-test-nomi').value;
+                const testTavsifi = document.getElementById('oraliq-test-tavsifi').value;
+                const testVaqti = document.getElementById('oraliq-test-vaqti').value;
+                const utishBali = document.getElementById('test-utish-bali').value;
+                
+                // Mavzularni yig'ish
+                const mavzularSelect = document.getElementById('oraliq-mavzular');
+                const tanlganMavzular = Array.from(mavzularSelect.selectedOptions).map(option => option.value);
+                
+                // Test ma'lumotlarini obyekt sifatida yig'ish
+                const testMalumotlari = {
+                    nomi: testNomi,
+                    tavsifi: testTavsifi,
+                    vaqti: parseInt(testVaqti),
+                    utishBali: parseInt(utishBali),
+                    mavzular: tanlganMavzular,
+                    savollarSoni: document.getElementById('savollar-soni').value,
+                    qiyinlikDarajasi: document.getElementById('qiyinlik-darajasi').value,
+                    tasodifiyTartib: document.getElementById('tasodifiy-tartib').checked,
+                    natijaniKursat: document.getElementById('natijani-kursat').checked,
+                    oldingSavollarQaytish: document.getElementById('oldingi-savolga-qaytish').checked
+                };
+                
+                // Ma'lumotlarni localStorage ga saqlash
+                const testlar = JSON.parse(localStorage.getItem('oraliqTestlar') || '[]');
+                testlar.push(testMalumotlari);
+                localStorage.setItem('oraliqTestlar', JSON.stringify(testlar));
+                
+                alert('Oraliq test muvaffaqiyatli yaratildi!');
+                oraliqForma.reset();
+            });
+        });
+    </script>
+     <script src="js/aside.js"></script>
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+ 
+             const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+             
+             // Create menu button
+             const menuBtn = document.createElement('button');
+             menuBtn.id = 'menuBtn';
+             menuBtn.className = 'menu-btn';
+             menuBtn.setAttribute('aria-label', 'Menu');
+             menuBtn.innerHTML = `
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <line x1="4" x2="20" y1="12" y2="12"></line>
+                     <line x1="4" x2="20" y1="6" y2="6"></line>
+                     <line x1="4" x2="20" y1="18" y2="18"></line>
+                 </svg>
+             `;
+             
+             // Create overlay
+             const overlay = document.createElement('div');
+             overlay.className = 'sidebar-overlay';
+             
+             // Append to placeholder
+             sidebarPlaceholder.appendChild(menuBtn);
+             sidebarPlaceholder.appendChild(overlay);
+             
+             // Fetch sidebar content (in a real app)
+             // For this demo, we'll load it from aside.html
+             fetch('aside.html')
+                 .then(response => response.text())
+                 .then(html => {
+                     const parser = new DOMParser();
+                     const doc = parser.parseFromString(html, 'text/html');
+                     const asideContainer = doc.querySelector('.aside-container');
+                     
+                     if (asideContainer) {
+                         sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                         
+                         // Re-initialize the aside system
+                         initApp();
+                     }
+                 })
+                 .catch(err => {
+                     console.error('Error loading sidebar:', err);
+                     
+ 
+                     
+                     sidebarPlaceholder.appendChild(asideContainer);
+                     
+                     // Initialize with basic functions
+                     menuBtn.addEventListener('click', function() {
+                         document.body.classList.toggle('sidebar-open');
+                     });
+                     
+                     document.querySelector('#closeBtn').addEventListener('click', function() {
+                         document.body.classList.remove('sidebar-open');
+                     });
+                 });
+         });
+     </script>
+</body>
+</html>

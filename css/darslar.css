@@ -1,0 +1,257 @@
+/* Asosiy o'zgaruvchilar */
+:root {
+    --asosiy-rang: #111827;
+    --matn-rang: #ffffff;
+    --tugma-rang: #3B82F6;
+    --tugma-hover: #2563EB;
+    --input-rang: #1F2937;
+    --chegaralar: #374151;
+    --ogohlantirish: #F59E0B;
+    --muvaffaqiyat: #10B981;
+    --xato: #EF4444;
+  }
+  
+  /* Asosiy uslublar */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--asosiy-rang);
+    color: var(--matn-rang);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  
+  .konteyner {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  /* Sarlavhalar */
+  .sarlavha {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--matn-rang);
+  }
+  
+  .kichik-sarlavha {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--matn-rang);
+  }
+  
+  /* Video va qo'llanma konteyner */
+  .dars-konteyner {
+    background-color: rgba(31, 41, 55, 0.5);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .dars-konteyner:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Video uslublari */
+  .video-konteyner {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .video-ramka {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    display: block;
+  }
+  
+  /* Qo'llanma uslublari */
+  .qollanma-konteyner {
+    background-color: rgba(31, 41, 55, 0.7);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--tugma-rang);
+  }
+  
+  .qollanma-sarlavha {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .qollanma-sarlavha:before {
+    content: "📘";
+    margin-right: 0.5rem;
+  }
+  
+  .qollanma-matn {
+    line-height: 1.6;
+  }
+  
+  /* Navigatsiya tugmalari */
+  .navigatsiya {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .tugma {
+    background-color: var(--tugma-rang);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tugma:hover {
+    background-color: var(--tugma-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tugma:active {
+    transform: translateY(0);
+  }
+  
+  .tugma-icon {
+    margin-right: 0.5rem;
+  }
+  
+  .tugma-icon-keyin {
+    margin-left: 0.5rem;
+  }
+  
+  /* Forma uslublari */
+  .forma {
+    background-color: rgba(31, 41, 55, 0.5);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .forma-guruh {
+    margin-bottom: 1.5rem;
+  }
+  
+  .yorliq {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .tanlash, .kiritish {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--input-rang);
+    border: 1px solid var(--chegaralar);
+    color: var(--matn-rang);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  .tanlash:focus, .kiritish:focus {
+    border-color: var(--tugma-rang);
+    outline: none;
+  }
+  
+  .fayl-tanlash {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--input-rang);
+    border: 2px dashed var(--chegaralar);
+    border-radius: 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .fayl-tanlash:hover {
+    border-color: var(--tugma-rang);
+  }
+  
+  .fayl-tanlash input[type="file"] {
+    display: none;
+  }
+  
+  .yuklash-tugma {
+    background-color: var(--muvaffaqiyat);
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .yuklash-tugma:hover {
+    background-color: #0CA875;
+  }
+  
+  .manba-konteyner {
+    display: none;
+  }
+  
+  .manba-konteyner.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  /* Responsive uslublar */
+  @media (max-width: 768px) {
+    .konteyner {
+      width: 95%;
+      padding: 1rem 0.5rem;
+    }
+    
+    .sarlavha {
+      font-size: 1.5rem;
+    }
+    
+    .tugma {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .forma {
+      padding: 1.5rem;
+    }
+  }
+  
+  /* Animatsiyalar */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .yuklandi {
+    animation: fadeIn 0.5s ease;
+  }

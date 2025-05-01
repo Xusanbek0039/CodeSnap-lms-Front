@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test ishlash | EduTest</title>
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+    <div class="asosiy-konteyner">
+
+        <main class="asosiy-kontent">
+            <div class="test-konteyner animate-fade-in">
+                <div class="test-sarlavha">
+                    <h2>Dasturlash Asoslari: Test</h2>
+                    <div class="test-malumot">
+                        <div class="malumot-element">
+                            <span class="malumot-yorliq">Qolgan vaqt:</span>
+                            <span class="malumot-qiymat" id="qolganVaqt">45:00</span>
+                        </div>
+                        <div class="malumot-element">
+                            <span class="malumot-yorliq">To'g'ri javoblar:</span>
+                            <span class="malumot-qiymat" id="togriJavoblar">0/5</span>
+                        </div>
+                        <div class="malumot-element">
+                            <span class="malumot-yorliq">Qolgan savollar:</span>
+                            <span class="malumot-qiymat" id="qolganSavollar">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="test-mazmuni">
+                    <div class="savol-konteyner animate-slide-up" id="savolKonteyner">
+                        <p class="savol-raqam">Savol <span id="joriy-savol">1</span>/<span id="jami-savol">5</span></p>
+                        <h2 class="savol-matn" id="savol-matn">Python dasturlash tilida o'zgaruvchi e'lon qilish uchun qaysi kalit so'z ishlatiladi?</h2>
+                        <div class="javoblar-royxati" id="javoblar-royxati">
+                            <div class="javob-variant" data-index="0">
+                                <input type="radio" name="javob" id="javob0">
+                                <label for="javob0">var</label>
+                            </div>
+                            <div class="javob-variant" data-index="1">
+                                <input type="radio" name="javob" id="javob1">
+                                <label for="javob1">let</label>
+                            </div>
+                            <div class="javob-variant" data-index="2">
+                                <input type="radio" name="javob" id="javob2">
+                                <label for="javob2">const</label>
+                            </div>
+                            <div class="javob-variant" data-index="3">
+                                <input type="radio" name="javob" id="javob3">
+                                <label for="javob3">Hech qanday kalit so'z kerak emas</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="natija-konteyner hidden" id="natija-konteyner">
+                        <h2 class="natija-sarlavha">Test yakunlandi!</h2>
+                        <p class="natija-malumot">Siz <span id="jami-savol-natija">5</span> ta savoldan <span id="togri-javoblar-natija">0</span> tasiga to'g'ri javob berdingiz.</p>
+                        <div class="natija-foiz">
+                            <div class="foiz-doira">
+                                <span class="foiz-qiymat" id="foiz-qiymat">0%</span>
+                            </div>
+                        </div>
+                        <div class="natija-yorliq" id="natija-yorliq">Yaxshi</div>
+                        <div class="natija-tugmalar">
+                            <a href="test_javoblari.html" class="tugma tugma-asosiy">Barcha natijalarni ko'rish</a>
+                            <a href="test.html" class="tugma tugma-ikkilamchi">Qayta urinish</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-tugmalar" id="test-tugmalar">
+                    <button class="tugma tugma-ikkilamchi oldingi-tugma animate-fade-in" id="oldingiTugma" disabled>
+                        Oldingi savol
+                    </button>
+                    <button class="tugma tugma-asosiy keyingi-tugma animate-fade-in" id="keyingiTugma">
+                        Keyingi savol
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Test savollari
+            const savollar = [
+                {
+                    id: 1,
+                    savol: "Python dasturlash tilida o'zgaruvchi e'lon qilish uchun qaysi kalit so'z ishlatiladi?",
+                    javoblar: ["var", "let", "const", "Hech qanday kalit so'z kerak emas"],
+                    togriJavob: 3
+                },
+                {
+                    id: 2,
+                    savol: "JavaScript-da massiv (array) e'lon qilish uchun qaysi belgilar ishlatiladi?",
+                    javoblar: ["()", "{}", "[]", "<>"],
+                    togriJavob: 2
+                },
+                {
+                    id: 3,
+                    savol: "HTML da yangi qatorga o'tish uchun qaysi teg ishlatiladi?",
+                    javoblar: ["<p>", "<br>", "<hr>", "<newline>"],
+                    togriJavob: 1
+                },
+                {
+                    id: 4,
+                    savol: "CSS-da elementlarni markazlashtirish uchun qaysi xususiyat ishlatiladi?",
+                    javoblar: ["text-align: center", "margin: auto", "align: center", "position: center"],
+                    togriJavob: 0
+                },
+                {
+                    id: 5,
+                    savol: "React-da holatni (state) o'zgartirish uchun qaysi hook ishlatiladi?",
+                    javoblar: ["useEffect", "useState", "useContext", "useReducer"],
+                    togriJavob: 1
+                }
+            ];
+
+            // O'zgaruvchilar
+            let joriyVaqt = 45 * 60; // 45 daqiqa
+            let joriyIndeks = 0;
+            let tanlangan = new Array(savollar.length).fill(null);
+            let togriJavoblarSoni = 0;
+            
+            // HTML elementlari
+            const vaqtElement = document.getElementById('qolganVaqt');
+            const togriJavoblarElement = document.getElementById('togriJavoblar');
+            const qolganSavollarElement = document.getElementById('qolganSavollar');
+            const joriyRaqamElement = document.getElementById('joriy-savol');
+            const jamiRaqamElement = document.getElementById('jami-savol');
+            const savolElement = document.getElementById('savol-matn');
+            const javoblarElement = document.getElementById('javoblar-royxati');
+            const oldingiTugma = document.getElementById('oldingiTugma');
+            const keyingiTugma = document.getElementById('keyingiTugma');
+            const savolKonteyner = document.getElementById('savolKonteyner');
+            const natijaKonteyner = document.getElementById('natija-konteyner');
+            const testTugmalar = document.getElementById('test-tugmalar');
+            const testMazmuni = document.getElementById('test-mazmuni');
+            
+            // Umumiy ma'lumotlarni yangilash
+            const yangilash = () => {
+                jamiRaqamElement.textContent = savollar.length;
+                joriyRaqamElement.textContent = joriyIndeks + 1;
+                qolganSavollarElement.textContent = savollar.length - tanlangan.filter(val => val !== null).length;
+                togriJavoblarElement.textContent = `${togriJavoblarSoni}/${savollar.length}`;
+                
+                // Oldingi tugma holatini yangilash
+                if (joriyIndeks === 0) {
+                    oldingiTugma.disabled = true;
+                } else {
+                    oldingiTugma.disabled = false;
+                }
+                
+                // Keyingi tugma matnini yangilash
+                if (joriyIndeks === savollar.length - 1) {
+                    keyingiTugma.textContent = "Testni tugatish";
+                } else {
+                    keyingiTugma.textContent = "Keyingi savol";
+                }
+                
+                // Savol va javoblarni yangilash
+                savolElement.textContent = savollar[joriyIndeks].savol;
+                
+                // Javoblarni tozalash
+                while (javoblarElement.firstChild) {
+                    javoblarElement.removeChild(javoblarElement.firstChild);
+                }
+                
+                // Javoblarni qo'shish
+                savollar[joriyIndeks].javoblar.forEach((javob, indeks) => {
+                    const javobDiv = document.createElement('div');
+                    javobDiv.className = 'javob-variant';
+                    javobDiv.dataset.index = indeks;
+                    
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = 'javob';
+                    input.id = `javob${indeks}`;
+                    if (tanlangan[joriyIndeks] === indeks) {
+                        input.checked = true;
+                        javobDiv.classList.add('tanlangan');
+                    }
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = `javob${indeks}`;
+                    label.textContent = javob;
+                    
+                    javobDiv.appendChild(input);
+                    javobDiv.appendChild(label);
+                    
+                    javobDiv.addEventListener('click', () => {
+                        tanlangan[joriyIndeks] = indeks;
+                        document.querySelectorAll('.javob-variant').forEach(elem => {
+                            elem.classList.remove('tanlangan');
+                        });
+                        javobDiv.classList.add('tanlangan');
+                        input.checked = true;
+                        yangilash();
+                    });
+                    
+                    javoblarElement.appendChild(javobDiv);
+                });
+            };
+            
+            // Vaqt hisoblagich
+            const vaqtHisoblagich = setInterval(() => {
+                joriyVaqt--;
+                const daqiqalar = Math.floor(joriyVaqt / 60);
+                const soniyalar = joriyVaqt % 60;
+                vaqtElement.textContent = `${daqiqalar}:${soniyalar.toString().padStart(2, '0')}`;
+                
+                if (joriyVaqt <= 0) {
+                    clearInterval(vaqtHisoblagich);
+                    testniTugatish();
+                }
+            }, 1000);
+            
+            // Oldingi savolga o'tish
+            oldingiTugma.addEventListener('click', () => {
+                if (joriyIndeks > 0) {
+                    joriyIndeks--;
+                    savolKonteyner.classList.remove('animate-slide-up');
+                    void savolKonteyner.offsetWidth; // Reflow
+                    savolKonteyner.classList.add('animate-slide-up');
+                    yangilash();
+                }
+            });
+            
+            // Keyingi savolga o'tish
+            keyingiTugma.addEventListener('click', () => {
+                if (joriyIndeks < savollar.length - 1) {
+                    joriyIndeks++;
+                    savolKonteyner.classList.remove('animate-slide-up');
+                    void savolKonteyner.offsetWidth; // Reflow
+                    savolKonteyner.classList.add('animate-slide-up');
+                    yangilash();
+                } else {
+                    testniTugatish();
+                }
+            });
+            
+            // Testni tugatish
+            const testniTugatish = () => {
+                clearInterval(vaqtHisoblagich);
+                
+                // To'g'ri javoblarni hisoblaymiz
+                togriJavoblarSoni = 0;
+                tanlangan.forEach((javob, indeks) => {
+                    if (javob === savollar[indeks].togriJavob) {
+                        togriJavoblarSoni++;
+                    }
+                });
+                
+                // Natija foizi
+                const foiz = Math.round((togriJavoblarSoni / savollar.length) * 100);
+                
+                // Natija elementlarini yangilaymiz
+                document.getElementById('jami-savol-natija').textContent = savollar.length;
+                document.getElementById('togri-javoblar-natija').textContent = togriJavoblarSoni;
+                document.getElementById('foiz-qiymat').textContent = `${foiz}%`;
+                
+                // Natija yorlig'ini belgilaymiz
+                const yorliqElement = document.getElementById('natija-yorliq');
+                if (foiz >= 80) {
+                    yorliqElement.textContent = "A'lo";
+                    yorliqElement.className = 'natija-yorliq natija-alo';
+                } else if (foiz >= 60) {
+                    yorliqElement.textContent = "Yaxshi";
+                    yorliqElement.className = 'natija-yorliq natija-yaxshi';
+                } else if (foiz >= 40) {
+                    yorliqElement.textContent = "Qoniqarli";
+                    yorliqElement.className = 'natija-yorliq natija-qoniqarli';
+                } else {
+                    yorliqElement.textContent = "Yomon";
+                    yorliqElement.className = 'natija-yorliq natija-yomon';
+                }
+                
+                // Ko'rinishni almashtiramiz
+                savolKonteyner.classList.add('hidden');
+                natijaKonteyner.classList.remove('hidden');
+                testTugmalar.classList.add('hidden');
+                
+                // Natijani saqlash
+                const natija = {
+                    sana: new Date().toISOString(),
+                    togriJavoblar: togriJavoblarSoni,
+                    jamiSavollar: savollar.length,
+                    foiz: foiz,
+                    vaqt: 45 * 60 - joriyVaqt // Sarflangan vaqt
+                };
+                
+                let natijalar = JSON.parse(localStorage.getItem('testNatijalari') || '[]');
+                natijalar.push(natija);
+                localStorage.setItem('testNatijalari', JSON.stringify(natijalar));
+            };
+            
+            // Dastlabki holatni yangilaymiz
+            yangilash();
+        });
+    </script>
+     <script src="js/aside.js"></script>
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+ 
+             const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+             
+             // Create menu button
+             const menuBtn = document.createElement('button');
+             menuBtn.id = 'menuBtn';
+             menuBtn.className = 'menu-btn';
+             menuBtn.setAttribute('aria-label', 'Menu');
+             menuBtn.innerHTML = `
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <line x1="4" x2="20" y1="12" y2="12"></line>
+                     <line x1="4" x2="20" y1="6" y2="6"></line>
+                     <line x1="4" x2="20" y1="18" y2="18"></line>
+                 </svg>
+             `;
+             
+             // Create overlay
+             const overlay = document.createElement('div');
+             overlay.className = 'sidebar-overlay';
+             
+             // Append to placeholder
+             sidebarPlaceholder.appendChild(menuBtn);
+             sidebarPlaceholder.appendChild(overlay);
+             
+             // Fetch sidebar content (in a real app)
+             // For this demo, we'll load it from aside.html
+             fetch('aside.html')
+                 .then(response => response.text())
+                 .then(html => {
+                     const parser = new DOMParser();
+                     const doc = parser.parseFromString(html, 'text/html');
+                     const asideContainer = doc.querySelector('.aside-container');
+                     
+                     if (asideContainer) {
+                         sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                         
+                         // Re-initialize the aside system
+                         initApp();
+                     }
+                 })
+                 .catch(err => {
+                     console.error('Error loading sidebar:', err);
+                     
+ 
+                     
+                     sidebarPlaceholder.appendChild(asideContainer);
+                     
+                     // Initialize with basic functions
+                     menuBtn.addEventListener('click', function() {
+                         document.body.classList.toggle('sidebar-open');
+                     });
+                     
+                     document.querySelector('#closeBtn').addEventListener('click', function() {
+                         document.body.classList.remove('sidebar-open');
+                     });
+                 });
+         });
+     </script>
+</body>
+</html>

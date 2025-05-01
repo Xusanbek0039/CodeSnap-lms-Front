@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test natijalari | EduTest</title>
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="stylesheet" href="css/aside.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+    <div class="asosiy-konteyner">
+
+
+        <main class="asosiy-kontent">
+            <div class="natijalar-konteyner animate-fade-in">
+                <div class="natijalar-header">
+                    <h2>Test natijalari</h2>
+                    <div class="qidiruv-saralash">
+                        <div class="qidiruv-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="qidiruv-ikonka">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" placeholder="Qidirish..." class="qidiruv-maydon" id="qidiruv-maydon">
+                        </div>
+                        <div class="saralash-box">
+                            <label for="saralash-turi">Saralash:</label>
+                            <select id="saralash-turi" class="saralash-tanlov">
+                                <option value="sana-yangi">Sana (yangi)</option>
+                                <option value="sana-eski">Sana (eski)</option>
+                                <option value="natija-yuqori">Natija (yuqori)</option>
+                                <option value="natija-past">Natija (past)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="jadval-konteyner">
+                    <table class="natijalar-jadval">
+                        <thead>
+                            <tr>
+                                <th>T/r</th>
+                                <th>Ism familiya</th>
+                                <th>Topshirilgan vaqt</th>
+                                <th>Test nomi</th>
+                                <th>Natija</th>
+                                <th>Baho</th>
+                                <th>Vaqt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="natijalar-tbody">
+                            <!-- JavaScript bilan to'ldiriladi -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="natija-yoq hidden" id="natija-yoq-xabar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                    </svg>
+                    <p>Hozircha test natijalari yo'q.</p>
+                    <a href="test.html" class="tugma tugma-asosiy">Test ishlashni boshlash</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Natijalarni localStorage dan olish
+            const natijalar = JSON.parse(localStorage.getItem('testNatijalari') || '[]');
+            const natijalarTbody = document.getElementById('natijalar-tbody');
+            const natijalarYoqXabar = document.getElementById('natija-yoq-xabar');
+            const qidiruvMaydon = document.getElementById('qidiruv-maydon');
+            const saralashTanlov = document.getElementById('saralash-turi');
+            
+            // Ma'lumotlarni jadvalga chiqarish
+            const jadvalniYangilash = (data) => {
+                natijalarTbody.innerHTML = '';
+                
+                if (data.length === 0) {
+                    natijalarYoqXabar.classList.remove('hidden');
+                    return;
+                }
+                
+                natijalarYoqXabar.classList.add('hidden');
+                
+                data.forEach((natija, indeks) => {
+                    const tr = document.createElement('tr');
+                    
+                    // Vaqtni formatlash
+                    const sana = new Date(natija.sana);
+                    const formatlashganSana = `${sana.getDate().toString().padStart(2, '0')}.${(sana.getMonth() + 1).toString().padStart(2, '0')}.${sana.getFullYear()} ${sana.getHours().toString().padStart(2, '0')}:${sana.getMinutes().toString().padStart(2, '0')}`;
+                    
+                    // Sarflangan vaqtni formatlash
+                    const daqiqalar = Math.floor(natija.vaqt / 60);
+                    const soniyalar = natija.vaqt % 60;
+                    const formatlashganVaqt = `${daqiqalar}:${soniyalar.toString().padStart(2, '0')}`;
+                    
+                    // Baho yorlig'ini aniqlash
+                    let bahoYorlig;
+                    if (natija.foiz >= 80) {
+                        bahoYorlig = '<span class="yorliq yorliq-alo">A\'lo</span>';
+                    } else if (natija.foiz >= 60) {
+                        bahoYorlig = '<span class="yorliq yorliq-yaxshi">Yaxshi</span>';
+                    } else if (natija.foiz >= 40) {
+                        bahoYorlig = '<span class="yorliq yorliq-qoniqarli">Qoniqarli</span>';
+                    } else {
+                        bahoYorlig = '<span class="yorliq yorliq-yomon">Yomon</span>';
+                    }
+                    
+                    tr.innerHTML = `
+                        <td>${indeks + 1}</td>
+                        <td>Mentor User</td>
+                        <td>${formatlashganSana}</td>
+                        <td>Dasturlash Asoslari</td>
+                        <td>${natija.togriJavoblar}/${natija.jamiSavollar} (${natija.foiz}%)</td>
+                        <td>${bahoYorlig}</td>
+                        <td>${formatlashganVaqt}</td>
+                    `;
+                    
+                    natijalarTbody.appendChild(tr);
+                });
+            };
+            
+            // Qidirish funksiyasi
+            const qidirish = (sorov) => {
+                if (!sorov) {
+                    return natijalar;
+                }
+                
+                sorov = sorov.toLowerCase();
+                return natijalar.filter(natija => {
+                    // Bu yerda haqiqiy ma'lumotlarni qidirish mantiqini qo'shing
+                    // Misol uchun, agar foydalanuvchi ismi bo'lsa:
+                    return 'mentor user'.includes(sorov) || 
+                           'dasturlash asoslari'.includes(sorov) ||
+                           natija.foiz.toString().includes(sorov);
+                });
+            };
+            
+            // Saralash funksiyasi
+            const saralash = (data, turi) => {
+                switch(turi) {
+                    case 'sana-yangi':
+                        return [...data].sort((a, b) => new Date(b.sana) - new Date(a.sana));
+                    case 'sana-eski':
+                        return [...data].sort((a, b) => new Date(a.sana) - new Date(b.sana));
+                    case 'natija-yuqori':
+                        return [...data].sort((a, b) => b.foiz - a.foiz);
+                    case 'natija-past':
+                        return [...data].sort((a, b) => a.foiz - b.foiz);
+                    default:
+                        return data;
+                }
+            };
+            
+            // Qidiruv va saralash hodisasini qo'shish
+            qidiruvMaydon.addEventListener('input', () => {
+                const qidirilgan = qidirish(qidiruvMaydon.value);
+                const saralangan = saralash(qidirilgan, saralashTanlov.value);
+                jadvalniYangilash(saralangan);
+            });
+            
+            saralashTanlov.addEventListener('change', () => {
+                const qidirilgan = qidirish(qidiruvMaydon.value);
+                const saralangan = saralash(qidirilgan, saralashTanlov.value);
+                jadvalniYangilash(saralangan);
+            });
+            
+            // Dastlabki holda jadvalga ma'lumotlarni chiqaramiz
+            const saralangan = saralash(natijalar, saralashTanlov.value);
+            jadvalniYangilash(saralangan);
+        });
+    </script>
+     <script src="js/aside.js"></script>
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+ 
+             const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+             
+             // Create menu button
+             const menuBtn = document.createElement('button');
+             menuBtn.id = 'menuBtn';
+             menuBtn.className = 'menu-btn';
+             menuBtn.setAttribute('aria-label', 'Menu');
+             menuBtn.innerHTML = `
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <line x1="4" x2="20" y1="12" y2="12"></line>
+                     <line x1="4" x2="20" y1="6" y2="6"></line>
+                     <line x1="4" x2="20" y1="18" y2="18"></line>
+                 </svg>
+             `;
+             
+             // Create overlay
+             const overlay = document.createElement('div');
+             overlay.className = 'sidebar-overlay';
+             
+             // Append to placeholder
+             sidebarPlaceholder.appendChild(menuBtn);
+             sidebarPlaceholder.appendChild(overlay);
+             
+             // Fetch sidebar content (in a real app)
+             // For this demo, we'll load it from aside.html
+             fetch('aside.html')
+                 .then(response => response.text())
+                 .then(html => {
+                     const parser = new DOMParser();
+                     const doc = parser.parseFromString(html, 'text/html');
+                     const asideContainer = doc.querySelector('.aside-container');
+                     
+                     if (asideContainer) {
+                         sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                         
+                         // Re-initialize the aside system
+                         initApp();
+                     }
+                 })
+                 .catch(err => {
+                     console.error('Error loading sidebar:', err);
+                     
+ 
+                     
+                     sidebarPlaceholder.appendChild(asideContainer);
+                     
+                     // Initialize with basic functions
+                     menuBtn.addEventListener('click', function() {
+                         document.body.classList.toggle('sidebar-open');
+                     });
+                     
+                     document.querySelector('#closeBtn').addEventListener('click', function() {
+                         document.body.classList.remove('sidebar-open');
+                     });
+                 });
+         });
+     </script>
+</body>
+</html>

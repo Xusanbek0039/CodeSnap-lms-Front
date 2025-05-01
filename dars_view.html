@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dars Ko'rish</title>
+    <link rel="stylesheet" href="css/darslar.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>    <div id="sidebar-placeholder"></div>
+
+    <div class="konteyner">
+        <h1 class="sarlavha">Dars: JavaScript asoslari</h1>
+        
+        <div class="dars-konteyner yuklandi">
+            <div class="video-konteyner">
+                <iframe class="video-ramka" 
+                    src="https://www.youtube.com/embed/PkZNo7MFNFg" 
+                    title="JavaScript darslik"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+            <div class="qollanma-konteyner">
+                <h3 class="qollanma-sarlavha">Dars qo'llanmasi</h3>
+                <div class="qollanma-matn">
+                    <p>Bu darsda JavaScript dasturlash tilining asosiy tushunchalari bilan tanishasiz:</p>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li>O'zgaruvchilar va ularning turlari</li>
+                        <li>Ifoda va operatorlar</li>
+                        <li>Shart operatorlari (if, else, switch)</li>
+                        <li>Funksiyalar va ularni e'lon qilish usullari</li>
+                        <li>Array (massiv) va uning metodlari</li>
+                        <li>DOM bilan ishlash</li>
+                    </ul>
+                    <p style="margin-top: 10px;">Yuqoridagi mavzularni o'rganish uchun kod misollardan foydalaniladi va amaliy mashqlar bajariladi.</p>
+                </div>
+            </div>
+            
+            <div class="navigatsiya">
+                <button class="tugma">
+                    <span class="tugma-icon">←</span> Oldingi dars
+                </button>
+                <button class="tugma">
+                    Keyingi dars <span class="tugma-icon-keyin">→</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="boshqa-darslar">
+            <h2 class="kichik-sarlavha">Kurs bo'yicha boshqa darslar</h2>
+            <div class="dars-konteyner" style="cursor: pointer;" onclick="window.location.href='#'">
+                <h3>1-dars: JavaScript kirish</h3>
+                <p>JavaScript tarixi, uning imkoniyatlari va qo'llanish sohalari</p>
+            </div>
+            <div class="dars-konteyner" style="cursor: pointer;" onclick="window.location.href='#'">
+                <h3>3-dars: JavaScript funksiyalari</h3>
+                <p>Funksiyalar, parameterlar, qaytish qiymatlari va funksiya turlari</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple animations for elements when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const darslar = document.querySelectorAll('.dars-konteyner');
+            darslar.forEach((dars, index) => {
+                setTimeout(() => {
+                    dars.classList.add('yuklandi');
+                }, index * 200);
+            });
+        });
+    </script>
+     <script src="js/aside.js"></script>
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+ 
+             const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+             
+             // Create menu button
+             const menuBtn = document.createElement('button');
+             menuBtn.id = 'menuBtn';
+             menuBtn.className = 'menu-btn';
+             menuBtn.setAttribute('aria-label', 'Menu');
+             menuBtn.innerHTML = `
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <line x1="4" x2="20" y1="12" y2="12"></line>
+                     <line x1="4" x2="20" y1="6" y2="6"></line>
+                     <line x1="4" x2="20" y1="18" y2="18"></line>
+                 </svg>
+             `;
+             
+             // Create overlay
+             const overlay = document.createElement('div');
+             overlay.className = 'sidebar-overlay';
+             
+             // Append to placeholder
+             sidebarPlaceholder.appendChild(menuBtn);
+             sidebarPlaceholder.appendChild(overlay);
+             
+             // Fetch sidebar content (in a real app)
+             // For this demo, we'll load it from aside.html
+             fetch('aside.html')
+                 .then(response => response.text())
+                 .then(html => {
+                     const parser = new DOMParser();
+                     const doc = parser.parseFromString(html, 'text/html');
+                     const asideContainer = doc.querySelector('.aside-container');
+                     
+                     if (asideContainer) {
+                         sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+                         
+                         // Re-initialize the aside system
+                         initApp();
+                     }
+                 })
+                 .catch(err => {
+                     console.error('Error loading sidebar:', err);
+                     
+ 
+                     
+                     sidebarPlaceholder.appendChild(asideContainer);
+                     
+                     // Initialize with basic functions
+                     menuBtn.addEventListener('click', function() {
+                         document.body.classList.toggle('sidebar-open');
+                     });
+                     
+                     document.querySelector('#closeBtn').addEventListener('click', function() {
+                         document.body.classList.remove('sidebar-open');
+                     });
+                 });
+         });
+     </script>
+</body>
+</html>

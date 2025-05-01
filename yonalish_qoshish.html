@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yo'nalish qo'shish | Online Education Platform</title>
+  <link rel="stylesheet" href="css/kurslar.css">
+  <link rel="stylesheet" href="css/aside.css">
+  <link rel="stylesheet" href="css/yonalish_qoshish.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <div class="container">
+    <header>
+      <h1 class="title">Yo'nalish qo'shish</h1>
+    </header>
+
+    <div class="direction-form-container">
+      <div class="form-header">
+        <h2 class="form-title">Yangi dasturlash yo'nalishini qo'shish</h2>
+        <a href="index.html" class="back-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Ortga qaytish
+        </a>
+      </div>
+
+      <form id="directionForm">
+        <div class="form-main">
+          <div class="form-section">
+            <h3>Yo'nalish ma'lumotlari</h3>
+            
+            <div class="form-group">
+              <label for="directionName" class="form-label">Yo'nalish nomi *</label>
+              <input type="text" id="directionName" class="form-input" placeholder="Masalan: Frontend" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="directionDescription" class="form-label">Yo'nalish tavsifi *</label>
+              <textarea id="directionDescription" class="form-textarea" placeholder="Yo'nalish haqida qisqacha ma'lumot..." required></textarea>
+              <p class="helper-text">Maximum 200 ta belgi</p>
+            </div>
+            
+            <div class="form-group">
+              <label for="directionLevel" class="form-label">Yo'nalish darajasi</label>
+              <select id="directionLevel" class="form-select">
+                <option value="beginner">Boshlang'ich</option>
+                <option value="intermediate">O'rta</option>
+                <option value="advanced">Yuqori</option>
+                <option value="all">Barcha darajalar</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Yo'nalish rangi</label>
+              <div class="color-options">
+                <div class="color-option selected" style="background-color: #e34c26;" data-color="#e34c26"></div>
+                <div class="color-option" style="background-color: #3776ab;" data-color="#3776ab"></div>
+                <div class="color-option" style="background-color: #61dafb;" data-color="#61dafb"></div>
+                <div class="color-option" style="background-color: #339933;" data-color="#339933"></div>
+                <div class="color-option" style="background-color: #6d28d9;" data-color="#6d28d9"></div>
+                <div class="color-option" style="background-color: #f59e0b;" data-color="#f59e0b"></div>
+                <div class="color-option" style="background-color: #10b981;" data-color="#10b981"></div>
+                <div class="color-option" style="background-color: #ef4444;" data-color="#ef4444"></div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Yo'nalish ikonkasi</label>
+              <div class="upload-container" id="uploadContainer">
+                <div class="upload-icon">📁</div>
+                <p class="upload-text">Ikonka yuklash uchun bu yerga bosing</p>
+                <p class="upload-hint">PNG, JPG formatidagi fayllar, eng ko'pi 2MB</p>
+                <input type="file" id="iconUpload" style="display: none;" accept="image/*">
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-section">
+            <h3>Ko'rinishi</h3>
+            <div class="preview-section">
+              <span class="preview-label">Ko'rinishi</span>
+              <div class="preview-card">
+                <div class="preview-image" id="previewImage">
+                  <p class="preview-placeholder">Ikonka yuklanmagan</p>
+                  <div class="preview-tech-icons">
+                    <div class="preview-tech-icon" id="previewTechIcon">Yangi</div>
+                  </div>
+                </div>
+                <div class="preview-info">
+                  <h3 class="preview-title" id="previewTitle">Yo'nalish nomi</h3>
+                  <p class="preview-description" id="previewDescription">Bu yerda yo'nalish tavsifi ko'rsatiladi. Yo'nalish haqida qisqacha ma'lumot kiritishingiz mumkin.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-buttons">
+          <a href="index.html" class="cancel-btn">Bekor qilish</a>
+          <button type="submit" class="submit-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>
+            Yo'nalishni qo'shish
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Form elements
+      const directionForm = document.getElementById('directionForm');
+      const directionName = document.getElementById('directionName');
+      const directionDescription = document.getElementById('directionDescription');
+      const directionLevel = document.getElementById('directionLevel');
+      const colorOptions = document.querySelectorAll('.color-option');
+      const uploadContainer = document.getElementById('uploadContainer');
+      const iconUpload = document.getElementById('iconUpload');
+      
+      // Preview elements
+      const previewTitle = document.getElementById('previewTitle');
+      const previewDescription = document.getElementById('previewDescription');
+      const previewTechIcon = document.getElementById('previewTechIcon');
+      const previewImage = document.getElementById('previewImage');
+      
+      // Update preview as user types
+      directionName.addEventListener('input', () => {
+        previewTitle.textContent = directionName.value || 'Yo\'nalish nomi';
+        previewTechIcon.textContent = directionName.value || 'Yangi';
+      });
+      
+      directionDescription.addEventListener('input', () => {
+        previewDescription.textContent = directionDescription.value || 'Bu yerda yo\'nalish tavsifi ko\'rsatiladi. Yo\'nalish haqida qisqacha ma\'lumot kiritishingiz mumkin.';
+      });
+      
+      // Handle color selection
+      let selectedColor = '#e34c26';
+      colorOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          // Remove selected class from all options
+          colorOptions.forEach(opt => opt.classList.remove('selected'));
+          // Add selected class to clicked option
+          option.classList.add('selected');
+          // Update selected color
+          selectedColor = option.dataset.color;
+          // Update preview
+          previewTechIcon.style.backgroundColor = selectedColor;
+        });
+      });
+      
+      // Handle file upload
+      uploadContainer.addEventListener('click', () => {
+        iconUpload.click();
+      });
+      
+      iconUpload.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            // Remove placeholder text
+            previewImage.innerHTML = '';
+            // Create image element
+            const img = document.createElement('img');
+            img.src = event.target.result;
+            previewImage.appendChild(img);
+            
+            // Re-add tech icon
+            const techIconsDiv = document.createElement('div');
+            techIconsDiv.className = 'preview-tech-icons';
+            techIconsDiv.innerHTML = `<div class="preview-tech-icon" id="previewTechIcon" style="background-color: ${selectedColor}">${directionName.value || 'Yangi'}</div>`;
+            previewImage.appendChild(techIconsDiv);
+            
+            // Update reference to tech icon
+            previewTechIcon = document.getElementById('previewTechIcon');
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+      
+      // Form submission
+      directionForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Show success message (in a real application, this would send data to the server)
+        alert('Yo\'nalish muvaffaqiyatli qo\'shildi!');
+        
+        // In a real application, you would redirect to the courses page or clear the form
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+  
+  <script src="js/aside.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+      
+      // Create menu button
+      const menuBtn = document.createElement('button');
+      menuBtn.id = 'menuBtn';
+      menuBtn.className = 'menu-btn';
+      menuBtn.setAttribute('aria-label', 'Menu');
+      menuBtn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      `;
+      
+      // Create overlay
+      const overlay = document.createElement('div');
+      overlay.className = 'sidebar-overlay';
+      
+      // Append to placeholder
+      sidebarPlaceholder.appendChild(menuBtn);
+      sidebarPlaceholder.appendChild(overlay);
+      
+      // Fetch sidebar content
+      fetch('aside.html')
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const asideContainer = doc.querySelector('.aside-container');
+          
+          if (asideContainer) {
+            sidebarPlaceholder.appendChild(asideContainer.cloneNode(true));
+            
+            // Re-initialize the aside system
+            initApp();
+          }
+        })
+        .catch(err => {
+          console.error('Error loading sidebar:', err);
+          
+          // Initialize with basic functions
+          menuBtn.addEventListener('click', function() {
+            document.body.classList.toggle('sidebar-open');
+          });
+          
+          document.querySelector('#closeBtn')?.addEventListener('click', function() {
+            document.body.classList.remove('sidebar-open');
+          });
+        });
+    });
+  </script>
+</body>
+</html>
